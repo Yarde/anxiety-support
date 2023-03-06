@@ -10,7 +10,7 @@ namespace Yarde
     {
         [SerializeField] private LoggerLevel _loggerLevel;
 
-        private async UniTaskVoid Start()
+        private void Start()
         {
             Logger.Level = _loggerLevel;
             Application.targetFrameRate = 60;

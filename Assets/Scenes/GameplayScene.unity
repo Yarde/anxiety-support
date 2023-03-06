@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 388170738}
-  - component: {fileID: 388170737}
+  - component: {fileID: 388170739}
   m_Layer: 0
   m_Name: GameplayScope
   m_TagString: Untagged
@@ -253,23 +253,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &388170737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388170736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a7cdf003fb401585b5170471caf0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentReference:
-    TypeName: Yarde.DependencyInjection.ProjectScope
-  autoRun: 1
-  autoInjectGameObjects: []
-  _joystick: {fileID: 8170153791668043265, guid: 057fd0e6c3b36534db3f9b03c13df97f, type: 3}
 --- !u!4 &388170738
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +268,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388170739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388170736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7cdf003fb401585b5170471caf0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: Yarde.DependencyInjection.ProjectContext
+  autoRun: 1
+  autoInjectGameObjects: []
+  _joystick: {fileID: 8170153791668043265, guid: 057fd0e6c3b36534db3f9b03c13df97f, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

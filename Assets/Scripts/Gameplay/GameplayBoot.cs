@@ -5,16 +5,15 @@ namespace Yarde.Gameplay
 {
     public class GameplayBoot : IStartable
     {
-        private readonly InputSystem _container;
+        private readonly InputSystem _inputSystem;
 
-        public GameplayBoot(InputSystem container)
+        public GameplayBoot(InputSystem inputSystem)
         {
-            _container = container;
+            _inputSystem = inputSystem;
         }
 
         void IStartable.Start()
         {
-            _container.GetMovementNormalized();
         }
     }
 }

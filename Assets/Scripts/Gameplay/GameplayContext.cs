@@ -1,15 +1,13 @@
-﻿using System;
-using Input;
+﻿using Input;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using Yarde.Gameplay;
 using Yarde.Input;
 using Yarde.UI;
 
-namespace Yarde.DependencyInjection
+namespace Yarde.Gameplay
 {
-    public class GameplaySceneContext : LifetimeScope
+    public class GameplayContext : LifetimeScope
     {
         [SerializeField] private Joystick _joystick;
 
