@@ -10,13 +10,22 @@ namespace Yarde.Gameplay
     public class GameplayContext : LifetimeScope
     {
         [SerializeField] private Joystick _joystick;
+        [SerializeField] private DogView _dogView;
+        [SerializeField] private GameplayPlane _plane;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<CanvasManager>();
-            builder.RegisterEntryPoint<GameplayBoot>();
-            builder.Register(InstantiateJoystick, Lifetime.Scoped);
+            builder.RegisterEntryPoint<GameplayBoot>(Lifetime.Scoped);
+            
             builder.Register<InputSystem>(Lifetime.Scoped);
+            builder.RegisterComponentInHierarchy<CanvasManager>();
+            
+            builder.Register(InstantiateJoystick, Lifetime.Scoped);
+            
+            builder.RegisterComponent(_plane);
+            
+            builder.RegisterComponent(_dogView);
+            builder.RegisterEntryPoint<Dog>(Lifetime.Scoped);
         }
 
         private Joystick InstantiateJoystick(IObjectResolver container)

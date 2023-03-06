@@ -15,12 +15,13 @@ namespace Yarde
             Logger.Level = _loggerLevel;
             Application.targetFrameRate = 60;
 
-            LoadScene().Forget();
+            LoadScene(1).Forget();
         }
 
-        private static async UniTaskVoid LoadScene()
+        private static async UniTaskVoid LoadScene(int index)
         {
-            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            await SceneManager.UnloadSceneAsync(index);
+            await SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
         }
     }
 }
