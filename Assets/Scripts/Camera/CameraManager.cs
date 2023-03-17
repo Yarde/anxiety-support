@@ -10,6 +10,7 @@ namespace Yarde.Camera
         public void SelectTarget(Transform toFollow)
         {
             _camera.Follow = toFollow;
+            _camera.LookAt = toFollow;
         }
     }
 }
