@@ -9,9 +9,12 @@ namespace Yarde.Gameplay
     {
         [Inject] private InputSystem _inputSystem;
 
+        [SerializeField] private Animator _animator;
+        
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _turnSmoothTime = 0.1f;
         private CharacterController _characterController;
+        private static readonly int Speed = Animator.StringToHash("Speed");
 
         private void Awake()
         {
@@ -20,6 +23,8 @@ namespace Yarde.Gameplay
 
         public void FixedUpdate()
         {
+            _animator.SetFloat(Speed, _inputSystem.Direction.magnitude);
+            
             if (!_inputSystem.IsMoving) return;
 
             _characterController.Move(_inputSystem.Direction * (_speed * Time.fixedDeltaTime));
