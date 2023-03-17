@@ -20,7 +20,13 @@ namespace Yarde
 
         private static async UniTaskVoid LoadScene(int index)
         {
-            await SceneManager.UnloadSceneAsync(index);
+#if UNITY_EDITOR
+            if (SceneManager.GetSceneByBuildIndex(index).isLoaded)
+            {
+                await SceneManager.UnloadSceneAsync(index);
+            }
+#endif
+            
             await SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
         }
     }

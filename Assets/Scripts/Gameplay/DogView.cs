@@ -9,7 +9,8 @@ namespace Yarde.Gameplay
     {
         [Inject] private InputSystem _inputSystem;
 
-        [SerializeField] private float _speed;
+        [SerializeField] private float _speed = 5f;
+        [SerializeField] private float _turnSmoothTime = 0.1f;
         private CharacterController _characterController;
 
         private void Awake()
@@ -22,7 +23,7 @@ namespace Yarde.Gameplay
             if (!_inputSystem.IsMoving) return;
 
             _characterController.Move(_inputSystem.Direction * (_speed * Time.fixedDeltaTime));
-            transform.rotation = _inputSystem.LookRotation;
+            transform.rotation = _inputSystem.LookRotationSmoothed(transform.eulerAngles.y, _turnSmoothTime);
         }
     }
 }
