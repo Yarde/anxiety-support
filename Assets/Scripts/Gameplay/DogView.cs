@@ -4,22 +4,25 @@ using Yarde.Input;
 
 namespace Yarde.Gameplay
 {
-    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
+    [RequireComponent(typeof(CharacterController), typeof(Collider))]
     public class DogView : MonoBehaviour
     {
         [Inject] private InputSystem _inputSystem;
 
         [SerializeField] private float _speed;
-        private Rigidbody _rigidbody;
-        
+        private CharacterController _characterController;
+
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
         }
 
         public void FixedUpdate()
         {
-            _rigidbody.velocity = _inputSystem.GetMovementNormalized() * _speed;
+            if (!_inputSystem.IsMoving) return;
+
+            _characterController.Move(_inputSystem.Direction * (_speed * Time.fixedDeltaTime));
+            transform.rotation = _inputSystem.LookRotation;
         }
     }
 }
