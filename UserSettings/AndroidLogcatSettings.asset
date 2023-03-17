@@ -1,10 +1,10 @@
 {
     "m_SelectedDeviceId": "197a63f6",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
-        "exited": false
+        "deviceId": "197a63f6",
+        "name": "com.DefaultCompany.AnxietyUNITASK_DOTWEEN_SUPPORTSupport",
+        "processId": 26295,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -12,6 +12,12 @@
             "deviceId": "197a63f6",
             "name": "com.DefaultCompany.AnxietyUNITASK_DOTWEEN_SUPPORTSupport",
             "processId": 26295,
+            "exited": true
+        },
+        {
+            "deviceId": "197a63f6",
+            "name": "com.android.vending",
+            "processId": 23578,
             "exited": false
         }
     ],
