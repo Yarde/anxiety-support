@@ -1,24 +1,30 @@
 ﻿using VContainer;
 using VContainer.Unity;
+using Yarde.Camera;
 
 namespace Yarde.Gameplay
 {
     public class Dog : IStartable
     {
         private readonly IObjectResolver _container;
-        private readonly DogView _view;
+        private readonly DogView _viewPrefab;
         private readonly GameplayPlane _plane;
+        private readonly CameraManager _cameraManager;
 
-        public Dog(IObjectResolver container, DogView view, GameplayPlane plane)
+        public DogView View { get; private set; }
+
+        public Dog(IObjectResolver container, DogView viewPrefab, GameplayPlane plane, CameraManager cameraManager)
         {
             _container = container;
-            _view = view;
+            _viewPrefab = viewPrefab;
             _plane = plane;
+            _cameraManager = cameraManager;
         }
 
         void IStartable.Start()
         {
-            _container.Instantiate(_view, _plane.transform);
+            View = _container.Instantiate(_viewPrefab, _plane.transform);
+            _cameraManager.SelectTarget(View.transform);
         }
     }
 }

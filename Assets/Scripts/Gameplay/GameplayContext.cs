@@ -2,6 +2,7 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using Yarde.Camera;
 using Yarde.Input;
 using Yarde.UI;
 
@@ -19,6 +20,8 @@ namespace Yarde.Gameplay
             
             builder.Register<InputSystem>(Lifetime.Scoped);
             builder.RegisterComponentInHierarchy<CanvasManager>();
+            builder.RegisterComponentInHierarchy<CameraManager>();
+            builder.RegisterComponentInHierarchy<GameplayPlane>();
             
             builder.Register(InstantiateJoystick, Lifetime.Scoped);
             
