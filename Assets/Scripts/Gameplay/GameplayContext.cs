@@ -16,14 +16,14 @@ namespace Yarde.Gameplay
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<GameplayBoot>(Lifetime.Scoped);
-            
+            builder.RegisterEntryPoint<EntityManager>(Lifetime.Scoped);
+
             builder.Register<InputSystem>(Lifetime.Scoped);
-            builder.Register<EntityManager>(Lifetime.Scoped);
-            
+
             builder.RegisterComponentInHierarchy<CanvasManager>();
             builder.RegisterComponentInHierarchy<CameraManager>();
             builder.RegisterComponentInHierarchy<GameplayPlane>();
-            
+
             builder.Register(InstantiateJoystick, Lifetime.Scoped);
         }
 

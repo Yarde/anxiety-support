@@ -9,14 +9,12 @@ namespace Yarde.Gameplay.Entities
         private readonly GameplayPlane _plane;
         private readonly CameraManager _cameraManager;
 
-        public Dog(IObjectResolver container, CameraManager cameraManager) : base(container)
+        public Dog(IObjectResolver container) : base(container)
         {
-            _cameraManager = cameraManager;
         }
 
         protected override void SetupInternal()
         {
-            _cameraManager.SelectTarget(View.transform);
         }
     }
 }
