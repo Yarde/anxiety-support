@@ -1,5 +1,4 @@
-﻿using Input;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using Yarde.Camera;

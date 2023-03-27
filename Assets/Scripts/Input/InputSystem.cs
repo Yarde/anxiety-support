@@ -1,5 +1,4 @@
-﻿using Input;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Yarde.Input
 {
