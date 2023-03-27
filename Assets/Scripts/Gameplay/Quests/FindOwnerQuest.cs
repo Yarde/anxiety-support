@@ -8,7 +8,7 @@ using Yarde.Quests;
 
 namespace Yarde.Gameplay.Quests
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(fileName = "FindOwnerQuest", menuName = "Quests/FindOwnerQuest", order = 0)]
     public class FindOwnerQuest : Quest
     {
         [SerializeField] private float _timeToFinish;

@@ -31,7 +31,7 @@ namespace Yarde.Gameplay.Entities
         {
             SpawnAllEntities();
 
-            _cameraManager.SelectTarget(_entities.FirstOrDefault(e => e.GetType() == typeof(Dog))?.View.transform);
+            _cameraManager.SelectTarget(GetEntityByType(typeof(Dog))?.View.transform);
         }
 
         private void SpawnAllEntities()

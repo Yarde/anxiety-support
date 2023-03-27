@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using VContainer.Unity;
 using Yarde.Gameplay.Entities;
@@ -7,24 +8,21 @@ using Yarde.Quests;
 namespace Yarde.Gameplay
 {
     [UsedImplicitly]
-    public class GameplayBoot : IStartable
+    public class GameplayScene
     {
         private readonly QuestSystem _questSystem;
         private readonly EntityManager _entityManager;
 
-        public GameplayBoot(QuestSystem questSystem, EntityManager entityManager)
+        public GameplayScene(QuestSystem questSystem, EntityManager entityManager)
         {
             _questSystem = questSystem;
             _entityManager = entityManager;
         }
 
-        void IStartable.Start()
+        public void Start(string questId, Action onSuccess, Action onFail)
         {
             _entityManager.Setup();
-            
-            _questSystem.StartQuest("find-owner",
-                () => Debug.Log("success"),
-                () => Debug.Log("fail"));
+            _questSystem.StartQuest(questId, onSuccess, onFail);
         }
     }
 }
