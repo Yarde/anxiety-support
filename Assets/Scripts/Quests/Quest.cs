@@ -18,6 +18,7 @@ namespace Yarde.Quests
             {
                 _cancellationTokenSource.Cancel();
                 _cancellationTokenSource.Dispose();
+                _cancellationTokenSource = null;
             }
         }
 
