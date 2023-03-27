@@ -8,9 +8,9 @@ namespace Yarde.Input
 
         private float X => _joystick.Horizontal;
         private float Y => _joystick.Vertical;
-        public Vector3 Direction => new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+        public Vector3 Input => new(_joystick.Horizontal, 0, _joystick.Vertical);
         private float TargetAngle => Mathf.Atan2(X, Y) * Mathf.Rad2Deg;
-        public bool IsMoving => Direction.magnitude > 0;
+        public bool IsMoving => Input.magnitude > 0;
 
         private float _turnSmoothVelocity;
 

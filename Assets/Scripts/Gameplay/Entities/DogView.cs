@@ -26,11 +26,11 @@ namespace Yarde.Gameplay.Entities
 
         public void FixedUpdate()
         {
-            _animator.SetFloat(Speed, _inputSystem.Direction.magnitude);
+            _animator.SetFloat(Speed, _inputSystem.Input.magnitude);
 
             if (!_inputSystem.IsMoving) return;
 
-            _characterController.Move(_inputSystem.Direction * (_speed * Time.fixedDeltaTime));
+            _characterController.Move(_inputSystem.Input * (_speed * Time.fixedDeltaTime));
             transform.rotation = _inputSystem.LookRotationSmoothed(transform.eulerAngles.y, _turnSmoothTime);
         }
     }
