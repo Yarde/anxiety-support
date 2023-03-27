@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 using VContainer.Unity;
 using Yarde.Gameplay.Entities;
 using Yarde.Quests;
 
 namespace Yarde.Gameplay
 {
+    [UsedImplicitly]
     public class GameplayBoot : IStartable
     {
         private readonly QuestSystem _questSystem;

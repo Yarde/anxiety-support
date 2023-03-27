@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayPlane : MonoBehaviour
+namespace Yarde.Gameplay
 {
+    public class GameplayPlane : MonoBehaviour
+    {
+    }
 }

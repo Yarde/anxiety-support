@@ -7,8 +7,8 @@ namespace Yarde.Utils.Timer
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class CountdownTimer : MonoBehaviour
     {
-        [SerializeField] private string format = "mm\\:ss";
-        [SerializeField] private string outputText = "{0}";
+        [SerializeField] private string _format = "mm\\:ss";
+        [SerializeField] private string _outputText = "{0}";
 
         private TextMeshProUGUI _timer;
         private bool _initialized;
@@ -41,7 +41,7 @@ namespace Yarde.Utils.Timer
                 timeLeft = TimeSpan.Zero;
             }
 
-            _timer.text = string.Format(outputText, timeLeft.ToString(format));
+            _timer.text = string.Format(_outputText, timeLeft.ToString(_format));
         }
     }
 }

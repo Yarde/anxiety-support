@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using VContainer;
-using VContainer.Unity;
 using Yarde.Camera;
 using Object = UnityEngine.Object;
 
 namespace Yarde.Gameplay.Entities
 {
+    [UsedImplicitly]
     public class EntityManager
     {
         private readonly List<Entity> _entities;

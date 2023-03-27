@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
 using Yarde.Gameplay.Entities;
@@ -12,7 +13,7 @@ namespace Yarde.Gameplay.Quests
     {
         [SerializeField] private float _timeToFinish;
 
-        [Inject] private EntityManager _entityManager; 
+        [Inject] [UsedImplicitly] private EntityManager _entityManager; 
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {

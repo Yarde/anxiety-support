@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -8,10 +9,11 @@ using Object = UnityEngine.Object;
 
 namespace Yarde.Quests
 {
+    [UsedImplicitly]
     public class QuestSystem : IDisposable
     {
-        private List<Quest> _activeQuests = new();
-        private IObjectResolver _container;
+        private readonly List<Quest> _activeQuests = new();
+        private readonly IObjectResolver _container;
 
         public QuestSystem(IObjectResolver container)
         {
@@ -31,8 +33,15 @@ namespace Yarde.Quests
         {
             var questData = LoadQuestData(questId);
             var quest = _container.Instantiate(questData);
+
+            SubscribeToQuest(onSuccess, onFail, quest);
             quest.Run().Forget();
 
+            _activeQuests.Add(quest);
+        }
+
+        private void SubscribeToQuest(Action onSuccess, Action onFail, Quest quest)
+        {
             quest.OnSucceeded += onSuccess;
             quest.OnFailed += onFail;
 
@@ -44,8 +53,6 @@ namespace Yarde.Quests
 
             quest.OnSucceeded += OnQuestFinished;
             quest.OnFailed += OnQuestFinished;
-
-            _activeQuests.Add(quest);
         }
 
         private Quest LoadQuestData(string questId)
