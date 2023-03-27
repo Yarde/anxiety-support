@@ -1,13 +1,9 @@
 {
-    "name": "Yarde.Gameplay",
+    "name": "Yarde.QuestSystem",
     "rootNamespace": "Yarde",
     "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:6a16809180d04217bfc48618557bfc8a",
-        "GUID:a2f80b51c9c14440b7bc4db2d71822ef",
-        "GUID:6f6024873b3247a09176fad55b2a94f1",
-        "GUID:4f3d476d2be447c38460d4e962bf08a9"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

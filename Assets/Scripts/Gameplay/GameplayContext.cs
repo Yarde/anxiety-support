@@ -4,6 +4,7 @@ using VContainer.Unity;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities;
 using Yarde.Input;
+using Yarde.Quests;
 using Yarde.UI;
 
 namespace Yarde.Gameplay
@@ -15,9 +16,10 @@ namespace Yarde.Gameplay
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<GameplayBoot>(Lifetime.Scoped);
-            builder.RegisterEntryPoint<EntityManager>(Lifetime.Scoped);
-
+            
+            builder.Register<EntityManager>(Lifetime.Scoped);
             builder.Register<InputSystem>(Lifetime.Scoped);
+            builder.Register<QuestSystem>(Lifetime.Scoped);
 
             builder.RegisterComponentInHierarchy<CanvasManager>();
             builder.RegisterComponentInHierarchy<CameraManager>();

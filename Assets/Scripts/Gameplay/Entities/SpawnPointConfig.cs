@@ -12,6 +12,7 @@ namespace Yarde.Gameplay.Entities
     public enum EntityType
     {
         Dog,
-        Human
+        Human,
+        Owner
     }
 }

@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace Yarde.Gameplay.Entities
 {
-    public class EntityManager : IStartable
+    public class EntityManager
     {
         private readonly List<Entity> _entities;
         private readonly CameraManager _cameraManager;
@@ -20,8 +20,13 @@ namespace Yarde.Gameplay.Entities
             _cameraManager = cameraManager;
             _entities = new List<Entity>();
         }
+        
+        public Entity GetEntityByType(Type type)
+        {
+            return _entities.FirstOrDefault(e => e.GetType() == type);
+        }
 
-        void IStartable.Start()
+        public void Setup()
         {
             SpawnAllEntities();
 
@@ -45,6 +50,7 @@ namespace Yarde.Gameplay.Entities
             {
                 EntityType.Dog => new Dog(container),
                 EntityType.Human => new Human(container),
+                EntityType.Owner => new Owner(container),
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
         }
