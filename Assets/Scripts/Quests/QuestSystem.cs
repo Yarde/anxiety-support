@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Assertions;
 using VContainer;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
@@ -26,6 +27,7 @@ namespace Yarde.Quests
             {
                 Object.Destroy(quest);
             }
+
             _activeQuests.Clear();
         }
 
@@ -34,25 +36,28 @@ namespace Yarde.Quests
             var questData = LoadQuestData(questId);
             var quest = _container.Instantiate(questData);
 
-            SubscribeToQuest(onSuccess, onFail, quest);
+            SubscribeToQuest(questId, onSuccess, onFail, quest);
             quest.Run().Forget();
 
             _activeQuests.Add(quest);
         }
 
-        private void SubscribeToQuest(Action onSuccess, Action onFail, Quest quest)
+        private void SubscribeToQuest(string questId, Action onSuccess, Action onFail, Quest quest)
         {
-            quest.OnSucceeded += onSuccess;
-            quest.OnFailed += onFail;
-
-            void OnQuestFinished()
+            void OnQuestFinished(string questSucceeded)
             {
+                Debug.Log(questSucceeded);
                 _activeQuests.Remove(quest);
+                Assert.IsFalse(_activeQuests.Contains(quest),
+                    "two quests with the same id are active wrong one could be removed");
                 Object.Destroy(quest);
             }
 
-            quest.OnSucceeded += OnQuestFinished;
-            quest.OnFailed += OnQuestFinished;
+            quest.OnSucceeded += () => OnQuestFinished($"Quest {questId} succeeded");
+            quest.OnFailed += () => OnQuestFinished($"Quest {questId} failed");
+
+            quest.OnSucceeded += onSuccess;
+            quest.OnFailed += onFail;
         }
 
         private Quest LoadQuestData(string questId)

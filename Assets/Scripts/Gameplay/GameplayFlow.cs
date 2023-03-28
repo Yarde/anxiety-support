@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,16 +33,26 @@ namespace Yarde.Gameplay
         {
             if (_questline.IsLastQuest(_currentSceneIndex - 1))
             {
+                await SceneManager.UnloadSceneAsync(_currentSceneIndex);
                 _currentSceneIndex = 0;
             }
+
+            _currentSceneIndex++;
             
-            await LoadScene(++_currentSceneIndex);
+            Debug.Log($"Loading scene {_currentSceneIndex}");
+            if (_currentSceneIndex > 1)
+            {
+                await SceneManager.UnloadSceneAsync(_currentSceneIndex - 1);
+            }
+            await SceneManager.LoadSceneAsync(_currentSceneIndex, LoadSceneMode.Additive);
             StartQuest();
         }
 
         private async void RestartScene()
         {
-            await LoadScene(_currentSceneIndex);
+            Debug.Log($"Restarting scene {_currentSceneIndex}");
+            await SceneManager.UnloadSceneAsync(_currentSceneIndex);
+            await SceneManager.LoadSceneAsync(_currentSceneIndex, LoadSceneMode.Additive);
             StartQuest();
         }
 
@@ -50,18 +61,10 @@ namespace Yarde.Gameplay
             var quest = _questline.GetQuest(_currentSceneIndex - 1);
             
             // todo find better solution
-            Object.FindObjectOfType<GameplayContext>().Container.Resolve<GameplayScene>().Start(quest, LoadNextScene, RestartScene);
-        }
-
-        private async UniTask LoadScene(int index)
-        {
-            // todo add loading screen
-            if (SceneManager.GetSceneByBuildIndex(index).isLoaded)
-            {
-                await SceneManager.UnloadSceneAsync(index);
-            }
-
-            await SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
+            var context = Object.FindObjectOfType<GameplayContext>();
+            var container = context.Container;
+            var scene = container.Resolve<GameplayScene>();
+            scene.Start(quest, LoadNextScene, RestartScene);
         }
     }
 }

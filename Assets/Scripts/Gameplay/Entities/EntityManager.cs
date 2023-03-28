@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 namespace Yarde.Gameplay.Entities
 {
     [UsedImplicitly]
-    public class EntityManager
+    public class EntityManager : IDisposable
     {
         private readonly List<Entity> _entities;
         private readonly CameraManager _cameraManager;
@@ -21,7 +21,12 @@ namespace Yarde.Gameplay.Entities
             _cameraManager = cameraManager;
             _entities = new List<Entity>();
         }
-        
+
+        public void Dispose()
+        {
+            _entities.Clear();
+        }
+
         public Entity GetEntityByType(Type type)
         {
             return _entities.FirstOrDefault(e => e.GetType() == type);
