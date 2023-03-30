@@ -13,9 +13,9 @@ namespace Yarde.Quests
             return index == _quests.Count - 1;
         }
         
-        public string GetQuest(int index)
+        public Quest GetQuest(int index)
         {
-            return _quests[index].name;
+            return _quests[index];
         }
     }
 }

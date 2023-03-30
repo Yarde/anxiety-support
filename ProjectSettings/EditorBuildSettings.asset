@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/VideoScene1.unity
     guid: 06111f7f26c7c433f85c8f0e5a6ae797
   - enabled: 1
-    path: Assets/Scenes/GameplayScene1.unity
+    path: Assets/Scenes/FindOwnerScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

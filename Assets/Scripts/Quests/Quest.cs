@@ -7,6 +7,8 @@ namespace Yarde.Quests
 {
     public abstract class Quest : ScriptableObject
     {
+        [field: SerializeField] public string SceneName { get; private set; }
+
         public event Action OnSucceeded;
         public event Action OnFailed;
 

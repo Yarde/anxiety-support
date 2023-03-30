@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,59 +13,58 @@ namespace Yarde.Gameplay
     [UsedImplicitly]
     public class GameplayFlow : IStartable
     {
-        private readonly IObjectResolver _container;
         private readonly Questline _questline;
 
-        private int _currentSceneIndex;
+        private int _currentQuestIndex;
+        private Quest _currentQuest;
 
-        public GameplayFlow(IObjectResolver container, Questline questline)
+        public GameplayFlow(Questline questline)
         {
-            _container = container;
             _questline = questline;
         }
 
         void IStartable.Start()
         {
-            LoadNextScene();
+            StartQuest(_currentQuestIndex).Forget();
         }
 
-        // todo fix cancellation
-        private async void LoadNextScene()
+        private void StartNextQuest()
         {
-            if (_questline.IsLastQuest(_currentSceneIndex - 1))
+            if (_questline.IsLastQuest(_currentQuestIndex))
             {
-                await SceneManager.UnloadSceneAsync(_currentSceneIndex);
-                _currentSceneIndex = 0;
+                _currentQuestIndex = 0;
+            }
+            else
+            {
+                _currentQuestIndex++;
             }
 
-            _currentSceneIndex++;
-            
-            Debug.Log($"Loading scene {_currentSceneIndex}");
-            if (_currentSceneIndex > 1)
+            StartQuest(_currentQuestIndex, _currentQuest.SceneName).Forget();
+        }
+
+        private void RestartQuest()
+        {
+            StartQuest(_currentQuestIndex, _currentQuest.SceneName).Forget();
+        }
+
+        private async UniTask StartQuest(int questIndex, string sceneToUnload = null)
+        {
+            _currentQuest = _questline.GetQuest(questIndex);
+
+            if (!string.IsNullOrEmpty(sceneToUnload))
             {
-                await SceneManager.UnloadSceneAsync(_currentSceneIndex - 1);
+                Debug.Log($"Unloading scene {sceneToUnload}");
+                await SceneManager.UnloadSceneAsync(sceneToUnload);
             }
-            await SceneManager.LoadSceneAsync(_currentSceneIndex, LoadSceneMode.Additive);
-            StartQuest();
-        }
 
-        private async void RestartScene()
-        {
-            Debug.Log($"Restarting scene {_currentSceneIndex}");
-            await SceneManager.UnloadSceneAsync(_currentSceneIndex);
-            await SceneManager.LoadSceneAsync(_currentSceneIndex, LoadSceneMode.Additive);
-            StartQuest();
-        }
+            Debug.Log($"Loading scene {_currentQuest.SceneName}");
+            await SceneManager.LoadSceneAsync(_currentQuest.SceneName, LoadSceneMode.Additive);
 
-        private void StartQuest()
-        {
-            var quest = _questline.GetQuest(_currentSceneIndex - 1);
-            
             // todo find better solution
             var context = Object.FindObjectOfType<SceneContext>();
             var container = context.Container;
             var scene = container.Resolve<IScene>();
-            scene.Start(quest, LoadNextScene, RestartScene);
+            scene.Start(_currentQuest.name, StartNextQuest, RestartQuest);
         }
     }
 }

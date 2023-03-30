@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a647d0f186e41c5a17ae7b2fc69ad48, type: 3}
   m_Name: WatchVideoQuest-1
   m_EditorClassIdentifier: 
+  <SceneName>k__BackingField: VideoScene1
