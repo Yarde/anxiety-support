@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
+using Yarde.Gameplay.Context;
+using Yarde.Gameplay.Scenes;
 using Yarde.Quests;
 
 namespace Yarde.Gameplay
@@ -61,9 +63,9 @@ namespace Yarde.Gameplay
             var quest = _questline.GetQuest(_currentSceneIndex - 1);
             
             // todo find better solution
-            var context = Object.FindObjectOfType<GameplayContext>();
+            var context = Object.FindObjectOfType<SceneContext>();
             var container = context.Container;
-            var scene = container.Resolve<GameplayScene>();
+            var scene = container.Resolve<IScene>();
             scene.Start(quest, LoadNextScene, RestartScene);
         }
     }

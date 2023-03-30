@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e954b208bc448e8b23f848d5176fbdb, type: 3}
-  m_Name: MainQuestline
+  m_Script: {fileID: 11500000, guid: 9a647d0f186e41c5a17ae7b2fc69ad48, type: 3}
+  m_Name: WatchVideoQuest-1
   m_EditorClassIdentifier: 
-  _quests:
-  - {fileID: 11400000, guid: e9e837c94b7a64735b97b1b4b713e31b, type: 2}
-  - {fileID: 11400000, guid: e10c7e2352a404219b428c2d1c8f4b75, type: 2}

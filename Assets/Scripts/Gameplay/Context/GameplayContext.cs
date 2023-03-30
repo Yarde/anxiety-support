@@ -3,19 +3,20 @@ using VContainer;
 using VContainer.Unity;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities;
+using Yarde.Gameplay.Scenes;
 using Yarde.Input;
 using Yarde.Quests;
 using Yarde.UI;
 
-namespace Yarde.Gameplay
+namespace Yarde.Gameplay.Context
 {
-    public class GameplayContext : LifetimeScope
+    public class GameplayContext : SceneContext
     {
         [SerializeField] private Joystick _joystick;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<GameplayScene>(Lifetime.Scoped);
+            builder.Register<IScene, GameplayScene>(Lifetime.Scoped);
             builder.Register<EntityManager>(Lifetime.Scoped);
             builder.Register<InputSystem>(Lifetime.Scoped);
             builder.Register<QuestSystem>(Lifetime.Scoped);

@@ -1,27 +1,21 @@
 ﻿using System;
 using JetBrains.Annotations;
-using UnityEngine;
-using VContainer.Unity;
-using Yarde.Gameplay.Entities;
 using Yarde.Quests;
 
-namespace Yarde.Gameplay
+namespace Yarde.Gameplay.Scenes
 {
     [UsedImplicitly]
-    public class GameplayScene
+    public class VideoScene : IScene
     {
         private readonly QuestSystem _questSystem;
-        private readonly EntityManager _entityManager;
 
-        public GameplayScene(QuestSystem questSystem, EntityManager entityManager)
+        public VideoScene(QuestSystem questSystem)
         {
             _questSystem = questSystem;
-            _entityManager = entityManager;
         }
 
         public void Start(string questId, Action onSuccess, Action onFail)
         {
-            _entityManager.Setup();
             _questSystem.StartQuest(questId, onSuccess, onFail);
         }
     }
