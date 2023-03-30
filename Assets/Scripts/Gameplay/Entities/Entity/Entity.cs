@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEngine.Assertions;
 using VContainer;
 using VContainer.Unity;
 
@@ -26,8 +24,7 @@ namespace Yarde.Gameplay.Entities
 
         private void SpawnEntityViewFromSpawnPoint(IObjectResolver container, SpawnPoint spawnPoint)
         {
-            Assert.IsNotNull(spawnPoint.Parent, $"spawnPoint.Parent for {spawnPoint.gameObject.name} cannot be null, probably you call spawn before Awake");
-            View = container.Instantiate(spawnPoint.Prefab, spawnPoint.Position, Quaternion.identity, spawnPoint.Parent);
+            View = container.Instantiate(spawnPoint.Prefab, spawnPoint.Transform);
         }
     }
 }
