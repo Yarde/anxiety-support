@@ -29,6 +29,8 @@ namespace Yarde.Gameplay.Entities.Entity
         }
 
         protected abstract void SetupInternal();
+        public abstract void TriggerDeath();
+
 
         private void SpawnEntityViewFromSpawnPoint(IObjectResolver container, SpawnPoint spawnPoint)
         {

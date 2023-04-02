@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.Assertions;
 using VContainer;
 using Yarde.Gameplay.Entities.SpawnPoints;
@@ -7,16 +8,28 @@ namespace Yarde.Gameplay.Entities.Entity
 {
     public class Monster : Entity
     {
+        private MonsterView _monsterView;
+        
         public Monster(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
         }
 
         protected override void SetupInternal()
         {
+            _monsterView = View as MonsterView;
+
             var owner = _container.Resolve<EntityManager>().GetEntityByType(typeof(Owner));
             Assert.IsNotNull(owner, "Owner is null");
+            Assert.IsNotNull(_monsterView, "View is null");
             
-            (View as MonsterView)?.SetTarget(owner.View);
+            _monsterView.SetTarget(owner.View);
+        }
+
+        public override void TriggerDeath()
+        {
+            Debug.Log($"Monster {_monsterView.name} died");
+            _monsterView.OnDie();
+            Object.Destroy(_monsterView.gameObject);
         }
     }
 }

@@ -12,5 +12,9 @@ namespace Yarde.Gameplay.Entities.Entity
         protected override void SetupInternal()
         {
         }
+
+        public override void TriggerDeath()
+        {
+        }
     }
 }

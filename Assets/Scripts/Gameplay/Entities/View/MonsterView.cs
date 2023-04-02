@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace Yarde.Gameplay.Entities.View
 {
@@ -11,14 +9,13 @@ namespace Yarde.Gameplay.Entities.View
 
         public void SetTarget(EntityView target)
         {
-            GoToTarget(target);
-        }
-
-        private void GoToTarget(EntityView target)
-        {
             _navMeshAgent.stoppingDistance = Random.Range(4f, 7f);
             _navMeshAgent.SetDestination(target.transform.position);
-            transform.LookAt(Vector3.back);
+        }
+
+        public void OnDie()
+        {
+            // play some particles or whatever
         }
     }
 }
