@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FindOwnerScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 6f08a7ae328b8477a9308faa309fd427
   m_configObjects: {}

@@ -1,7 +1,8 @@
 using VContainer;
 using VContainer.Unity;
+using Yarde.Gameplay.Entities.View;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.Entity
 {
     public abstract class Entity
     {
@@ -14,7 +15,7 @@ namespace Yarde.Gameplay.Entities
             _container = container;
         }
 
-        public void Setup(SpawnPoint spawnPoint)
+        public void Setup(SpawnPoint.SpawnPoint spawnPoint)
         {
             SpawnEntityViewFromSpawnPoint(_container, spawnPoint);
             SetupInternal();
@@ -22,7 +23,7 @@ namespace Yarde.Gameplay.Entities
 
         protected abstract void SetupInternal();
 
-        private void SpawnEntityViewFromSpawnPoint(IObjectResolver container, SpawnPoint spawnPoint)
+        private void SpawnEntityViewFromSpawnPoint(IObjectResolver container, SpawnPoint.SpawnPoint spawnPoint)
         {
             View = container.Instantiate(spawnPoint.Prefab, spawnPoint.Transform);
         }

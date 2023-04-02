@@ -1,7 +1,8 @@
 ﻿using VContainer;
 using Yarde.Camera;
+using Yarde.Gameplay.Entities.View;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.Entity
 {
     public class Dog : Entity
     {

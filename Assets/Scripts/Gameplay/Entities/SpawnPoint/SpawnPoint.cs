@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Yarde.Gameplay.Entities.View;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.SpawnPoint
 {
     public class SpawnPoint : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using VContainer;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.Entity
 {
     public class Owner : Entity
     {

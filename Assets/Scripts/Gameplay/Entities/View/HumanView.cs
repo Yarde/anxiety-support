@@ -1,4 +1,4 @@
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.View
 {
     public class HumanView : EntityView
     {

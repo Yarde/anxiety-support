@@ -1,6 +1,7 @@
 using UnityEngine;
+using Yarde.Gameplay.Entities.View;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.SpawnPoint
 {
     [CreateAssetMenu]
     public class SpawnPointConfig : ScriptableObject

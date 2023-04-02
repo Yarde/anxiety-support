@@ -4,6 +4,8 @@ using System.Linq;
 using JetBrains.Annotations;
 using VContainer;
 using Yarde.Camera;
+using Yarde.Gameplay.Entities.Entity;
+using Yarde.Gameplay.Entities.SpawnPoint;
 using Object = UnityEngine.Object;
 
 namespace Yarde.Gameplay.Entities
@@ -11,15 +13,13 @@ namespace Yarde.Gameplay.Entities
     [UsedImplicitly]
     public class EntityManager : IDisposable
     {
-        private readonly List<Entity> _entities;
-        private readonly CameraManager _cameraManager;
+        private readonly List<Entity.Entity> _entities;
         private readonly IObjectResolver _container;
 
         public EntityManager(IObjectResolver container, CameraManager cameraManager)
         {
             _container = container;
-            _cameraManager = cameraManager;
-            _entities = new List<Entity>();
+            _entities = new List<Entity.Entity>();
         }
 
         public void Dispose()
@@ -27,7 +27,7 @@ namespace Yarde.Gameplay.Entities
             _entities.Clear();
         }
 
-        public Entity GetEntityByType(Type type)
+        public Entity.Entity GetEntityByType(Type type)
         {
             return _entities.FirstOrDefault(e => e.GetType() == type);
         }
@@ -35,13 +35,11 @@ namespace Yarde.Gameplay.Entities
         public void Setup()
         {
             SpawnAllEntities();
-
-            _cameraManager.SelectTarget(GetEntityByType(typeof(Dog))?.View.transform);
         }
 
         private void SpawnAllEntities()
         {
-            var spawnPoints = Object.FindObjectsOfType<SpawnPoint>();
+            var spawnPoints = Object.FindObjectsOfType<SpawnPoint.SpawnPoint>();
             foreach (var spawnPoint in spawnPoints)
             {
                 var entity = CreateEntity(spawnPoint.Type, _container);
@@ -50,7 +48,7 @@ namespace Yarde.Gameplay.Entities
             }
         }
 
-        private static Entity CreateEntity(EntityType type, IObjectResolver container)
+        private static Entity.Entity CreateEntity(EntityType type, IObjectResolver container)
         {
             return type switch
             {

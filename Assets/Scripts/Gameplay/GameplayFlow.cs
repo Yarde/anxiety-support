@@ -1,12 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 using Yarde.Gameplay.Context;
 using Yarde.Gameplay.Scenes;
 using Yarde.Quests;
+using Yarde.Scene;
 
 namespace Yarde.Gameplay
 {
@@ -14,13 +14,15 @@ namespace Yarde.Gameplay
     public class GameplayFlow : IStartable
     {
         private readonly Questline _questline;
+        private readonly SceneController _sceneController;
 
         private int _currentQuestIndex;
         private Quest _currentQuest;
 
-        public GameplayFlow(Questline questline)
+        public GameplayFlow(Questline questline, SceneController sceneController)
         {
             _questline = questline;
+            _sceneController = sceneController;
         }
 
         void IStartable.Start()
@@ -51,14 +53,7 @@ namespace Yarde.Gameplay
         {
             _currentQuest = _questline.GetQuest(questIndex);
 
-            if (!string.IsNullOrEmpty(sceneToUnload))
-            {
-                Debug.Log($"Unloading scene {sceneToUnload}");
-                await SceneManager.UnloadSceneAsync(sceneToUnload);
-            }
-
-            Debug.Log($"Loading scene {_currentQuest.SceneName}");
-            await SceneManager.LoadSceneAsync(_currentQuest.SceneName, LoadSceneMode.Additive);
+            await _sceneController.ChangeScene(_currentQuest.SceneName, sceneToUnload);
 
             // todo find better solution
             var context = Object.FindObjectOfType<SceneContext>();

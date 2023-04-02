@@ -3,7 +3,7 @@ using UnityEngine;
 using VContainer;
 using Yarde.Input;
 
-namespace Yarde.Gameplay.Entities
+namespace Yarde.Gameplay.Entities.View
 {
     [RequireComponent(typeof(CharacterController), typeof(Collider))]
     public class DogView : EntityView
