@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c6f9926f744a3196c9ca7774df2508, type: 3}
   m_Name: FightMonstersQuest
   m_EditorClassIdentifier: 
-  <SceneName>k__BackingField: 
+  <SceneName>k__BackingField: FightMonstarsScene
