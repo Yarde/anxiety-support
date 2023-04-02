@@ -10,7 +10,7 @@ namespace Yarde.Gameplay.Quests
     {
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
-            await UniTask.Never(cts.Token);
+            await UniTask.Delay(12000);
         }
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)

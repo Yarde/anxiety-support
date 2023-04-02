@@ -1,15 +1,23 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 namespace Yarde.Scene
 {
     public class SceneController
     {
         private const string LoadingSceneName = "LoadingScene";
-        private const int MinAnimationTime = 2000;
+        private const int MinAnimationTimeWithAnimation = 5;
 
         private LoadingScreen _loadingScreen;
+
+        private readonly List<string> _scenesWithAnimation = new()
+        {
+            "FindOwnerScene"
+        };
 
         private async UniTask<LoadingScreen> Initialize()
         {
@@ -20,7 +28,9 @@ namespace Yarde.Scene
         public async UniTask ChangeScene(string sceneToLoad, string sceneToUnload)
         {
             _loadingScreen ??= await Initialize();
-            await _loadingScreen.StartLoading();
+            var showAnimation = _scenesWithAnimation.Contains(sceneToLoad);
+
+            await _loadingScreen.StartLoading(showAnimation);
 
             if (!string.IsNullOrEmpty(sceneToUnload))
             {
@@ -31,9 +41,11 @@ namespace Yarde.Scene
             Debug.Log($"Loading scene {sceneToLoad}");
             await UniTask.WhenAll(
                 SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive).ToUniTask(),
-                UniTask.Delay(MinAnimationTime));
+                showAnimation ?
+                UniTask.Delay(TimeSpan.FromSeconds(MinAnimationTimeWithAnimation))
+                : UniTask.CompletedTask);
 
-            await _loadingScreen.StopLoading();
+            await _loadingScreen.StopLoading(showAnimation);
         }
     }
 }
