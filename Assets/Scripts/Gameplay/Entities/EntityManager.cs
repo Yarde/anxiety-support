@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using VContainer;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities.Entity;
-using Yarde.Gameplay.Entities.SpawnPoint;
+using Yarde.Gameplay.Entities.SpawnPoints;
 using Object = UnityEngine.Object;
 
 namespace Yarde.Gameplay.Entities
@@ -39,22 +40,48 @@ namespace Yarde.Gameplay.Entities
 
         private void SpawnAllEntities()
         {
-            var spawnPoints = Object.FindObjectsOfType<SpawnPoint.SpawnPoint>();
+            var spawnPoints = Object.FindObjectsOfType<SpawnPoint>();
             foreach (var spawnPoint in spawnPoints)
             {
-                var entity = CreateEntity(spawnPoint.Type, _container);
-                entity.Setup(spawnPoint);
-                _entities.Add(entity);
+                if (spawnPoint.Delay > 0)
+                {
+                    SpawnDelayedEntity(spawnPoint).Forget();
+                }
+                else
+                {
+                    _entities.Add(SpawnEntity(spawnPoint));
+                }
+            }
+
+            foreach (var entity in _entities)
+            {
+                entity.Start();
             }
         }
 
-        private static Entity.Entity CreateEntity(EntityType type, IObjectResolver container)
+        private async UniTaskVoid SpawnDelayedEntity(SpawnPoint spawnPoint)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(spawnPoint.Delay));
+            var entity = SpawnEntity(spawnPoint);
+            _entities.Add(entity);
+            entity.Start();
+        }
+
+        private Entity.Entity SpawnEntity(SpawnPoint spawnPoint)
+        {
+            var entity = CreateEntity(spawnPoint.Type, _container, spawnPoint);
+            entity.Awake();
+            return entity;
+        }
+
+        private static Entity.Entity CreateEntity(EntityType type, IObjectResolver container, SpawnPoint spawnPoint)
         {
             return type switch
             {
-                EntityType.Dog => new Dog(container),
-                EntityType.Human => new Human(container),
-                EntityType.Owner => new Owner(container),
+                EntityType.Dog => new Dog(container, spawnPoint),
+                EntityType.Human => new Human(container, spawnPoint),
+                EntityType.Owner => new Owner(container, spawnPoint),
+                EntityType.Monster => new Monster(container, spawnPoint),
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
         }

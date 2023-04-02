@@ -1,7 +1,7 @@
 using UnityEngine;
 using Yarde.Gameplay.Entities.View;
 
-namespace Yarde.Gameplay.Entities.SpawnPoint
+namespace Yarde.Gameplay.Entities.SpawnPoints
 {
     [CreateAssetMenu]
     public class SpawnPointConfig : ScriptableObject
@@ -14,6 +14,7 @@ namespace Yarde.Gameplay.Entities.SpawnPoint
     {
         Dog,
         Human,
-        Owner
+        Owner,
+        Monster
     }
 }

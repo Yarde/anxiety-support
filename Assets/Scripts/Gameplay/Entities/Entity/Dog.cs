@@ -1,13 +1,11 @@
 ﻿using VContainer;
-using Yarde.Camera;
-using Yarde.Gameplay.Entities.View;
+using Yarde.Gameplay.Entities.SpawnPoints;
 
 namespace Yarde.Gameplay.Entities.Entity
 {
     public class Dog : Entity
     {
-
-        public Dog(IObjectResolver container) : base(container)
+        public Dog(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
         }
 

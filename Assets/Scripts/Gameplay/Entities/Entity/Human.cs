@@ -1,10 +1,11 @@
 using VContainer;
+using Yarde.Gameplay.Entities.SpawnPoints;
 
 namespace Yarde.Gameplay.Entities.Entity
 {
     public class Human : Entity
     {
-        public Human(IObjectResolver container) : base(container)
+        public Human(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
         }
 
