@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using VContainer;
@@ -14,6 +15,8 @@ namespace Yarde.Gameplay.Entities
     [UsedImplicitly]
     public class EntityManager : IDisposable
     {
+        private CancellationTokenSource _cts;
+        
         private readonly List<Entity.Entity> _entities;
         private readonly IObjectResolver _container;
 
@@ -25,6 +28,8 @@ namespace Yarde.Gameplay.Entities
 
         public void Dispose()
         {
+            _cts.Cancel();
+            _cts.Dispose();
             _entities.Clear();
         }
 
@@ -35,6 +40,7 @@ namespace Yarde.Gameplay.Entities
 
         public void Setup()
         {
+            _cts = new CancellationTokenSource();
             SpawnAllEntities();
         }
 
@@ -45,7 +51,7 @@ namespace Yarde.Gameplay.Entities
             {
                 if (spawnPoint.Delay > 0)
                 {
-                    SpawnDelayedEntity(spawnPoint).Forget();
+                    SpawnDelayedEntity(spawnPoint, spawnPoint.Delay).Forget();
                 }
                 else
                 {
@@ -59,9 +65,14 @@ namespace Yarde.Gameplay.Entities
             }
         }
 
-        private async UniTaskVoid SpawnDelayedEntity(SpawnPoint spawnPoint)
+        private async UniTaskVoid SpawnDelayedEntity(SpawnPoint spawnPoint, float delay)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(spawnPoint.Delay));
+            var cancelled = await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: _cts.Token)
+                .SuppressCancellationThrow();
+            if (cancelled)
+            {
+                return;
+            }
             var entity = SpawnEntity(spawnPoint);
             _entities.Add(entity);
             entity.Start();
@@ -71,6 +82,13 @@ namespace Yarde.Gameplay.Entities
         {
             var entity = CreateEntity(spawnPoint.Type, _container, spawnPoint);
             entity.Awake();
+            
+            spawnPoint.Repeats--;
+            if (spawnPoint.Repeats > 0)
+            {
+                SpawnDelayedEntity(spawnPoint, spawnPoint.Cooldown).Forget();
+            }
+            
             return entity;
         }
 

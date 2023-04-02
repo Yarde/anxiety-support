@@ -8,7 +8,11 @@ namespace Yarde.Gameplay.Entities.SpawnPoints
     {
         [SerializeField] private SpawnPointConfig _config;
         [SerializeField] private float _delay;
-
+        
+        [Header("Repeatable spawn settings")]
+        [SerializeField] private int _repeats = 1;
+        [SerializeField] private float _cooldown = 5f;
+        
         private readonly List<Color> _gizmoColors = new()
         {
             Color.red,
@@ -26,10 +30,13 @@ namespace Yarde.Gameplay.Entities.SpawnPoints
         public Transform Transform { get; private set; }
         public EntityView Prefab => _config.ViewPrefab;
         public float Delay => _delay;
+        public float Repeats { get; set; }
+        public float Cooldown => _cooldown;
 
         private void Awake()
         {
             Transform = transform;
+            Repeats = _repeats;
         }
 
         private void OnDrawGizmos()

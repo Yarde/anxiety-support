@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Yarde.Gameplay.Entities.View
 {
@@ -16,6 +18,7 @@ namespace Yarde.Gameplay.Entities.View
         {
             _navMeshAgent.stoppingDistance = Random.Range(4f, 7f);
             _navMeshAgent.SetDestination(target.transform.position);
+            transform.LookAt(Vector3.back);
         }
     }
 }
