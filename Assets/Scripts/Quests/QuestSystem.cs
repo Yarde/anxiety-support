@@ -13,6 +13,8 @@ namespace Yarde.Quests
     [UsedImplicitly]
     public class QuestSystem : IDisposable
     {
+        private const string QuestsPath = "Quests/";
+        
         private readonly List<Quest> _activeQuests = new();
         private readonly IObjectResolver _container;
 
@@ -62,7 +64,7 @@ namespace Yarde.Quests
 
         private Quest LoadQuestData(string questId)
         {
-            return Resources.Load<Quest>(questId);
+            return Resources.Load<Quest>(QuestsPath + questId);
         }
     }
 }
