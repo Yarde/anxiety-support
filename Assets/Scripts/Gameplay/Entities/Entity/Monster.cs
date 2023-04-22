@@ -9,7 +9,7 @@ namespace Yarde.Gameplay.Entities.Entity
     public class Monster : Entity
     {
         private MonsterView _monsterView;
-        
+
         public Monster(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
         }
@@ -21,15 +21,18 @@ namespace Yarde.Gameplay.Entities.Entity
             var owner = _container.Resolve<EntityManager>().GetEntityByType(typeof(Owner));
             Assert.IsNotNull(owner, "Owner is null");
             Assert.IsNotNull(_monsterView, "View is null");
-            
+
             _monsterView.SetTarget(owner.View);
         }
 
-        public override void TriggerDeath()
+        public override async void TriggerDeath()
         {
             Debug.Log($"Monster {_monsterView.name} died");
-            _monsterView.OnDie();
-            Object.Destroy(_monsterView.gameObject);
+            await _monsterView.OnDie();
+            if (_monsterView)
+            {
+                Object.Destroy(_monsterView.gameObject);
+            }
         }
     }
 }

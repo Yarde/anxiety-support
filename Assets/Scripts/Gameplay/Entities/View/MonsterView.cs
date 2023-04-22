@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,7 @@ namespace Yarde.Gameplay.Entities.View
             _navMeshAgent.SetDestination(target.transform.position);
         }
 
-        public void OnDie()
+        public async UniTask OnDie()
         {
             // play some particles or whatever
         }
