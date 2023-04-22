@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+    second: {fileID: 2100000, guid: a0e2fa311a52efa4d818486d7dac2254, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -38,18 +38,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: human_rig|human_rigAction.001 (1)
-      takeName: human_rig|human_rigAction.001
+      name: metarig|metarigAction
+      takeName: metarig|metarigAction
       internalID: 6569870395473798459
       firstFrame: 0
-      lastFrame: 855
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -78,7 +78,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

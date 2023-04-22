@@ -3,7 +3,12 @@ guid: 1f29ff9ae6591fc4aac9b86d29f3f070
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: -876546973899608171, guid: ad4df9fec17a27f45be231e06e62e293, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,8 +38,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Flying (1)
-      takeName: Armature|Flying
+      name: Armature|Atack
+      takeName: Armature|Atack
       internalID: -4667240241141223586
       firstFrame: 0
       lastFrame: 39
@@ -102,7 +107,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
