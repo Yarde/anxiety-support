@@ -30,21 +30,31 @@ namespace Yarde.Gameplay.Entities.Entity
 
         private async UniTaskVoid TryAttack(Owner owner, CancellationToken ctx)
         {
-            if (_monsterView.IsAttackingDistance && !ctx.IsCancellationRequested)
+            while (!ctx.IsCancellationRequested)
             {
-                owner.TakeDamage(1);
-                await UniTask.Delay(1000, cancellationToken: ctx);
+                if (_monsterView.IsAttackingDistance)
+                {
+                    owner.TakeDamage(1);
+                    await _monsterView.Attack();
+                }
+                else
+                {
+                    await UniTask.Delay(1000, cancellationToken: ctx);
+                }
             }
         }
 
         public override bool TakeDamage(int damage)
         {
+            Health -= damage;
+
+            if (Health > 0)
+            {
+                return false;
+            }
+            
             Debug.Log($"Monster {_monsterView.name} died");
             _monsterView.OnDie().Forget();
-            if (_monsterView)
-            {
-                Object.Destroy(_monsterView.gameObject);
-            }
 
             return true;
         }

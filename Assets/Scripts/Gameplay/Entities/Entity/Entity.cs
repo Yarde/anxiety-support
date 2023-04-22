@@ -11,11 +11,13 @@ namespace Yarde.Gameplay.Entities.Entity
 
         protected readonly IObjectResolver _container;
         private readonly SpawnPoint _spawnPoint;
+        public float Health { get; protected set; }
 
         protected Entity(IObjectResolver container, SpawnPoint spawnPoint)
         {
             _container = container;
             _spawnPoint = spawnPoint;
+            Health = _spawnPoint.Health;
         }
 
         public void Awake()

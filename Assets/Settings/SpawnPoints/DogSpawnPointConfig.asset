@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e8b6a59223468785710f8509fc8efb, type: 3}
   m_Name: DogSpawnPointConfig
   m_EditorClassIdentifier: 
-  <ViewPrefab>k__BackingField: {fileID: 2891345449929958423, guid: 571af8d7e92fcee4a9a834846ca2c787, type: 3}
+  <ViewPrefab>k__BackingField:
+  - {fileID: 2891345449929958423, guid: 571af8d7e92fcee4a9a834846ca2c787, type: 3}
   <Type>k__BackingField: 0

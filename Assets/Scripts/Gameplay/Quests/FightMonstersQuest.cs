@@ -22,6 +22,8 @@ namespace Yarde.Gameplay.Quests
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)
         {
+            await UniTask.WaitUntil(() => _entityManager.GetEntityByType<Owner>() != null,
+                cancellationToken: cts.Token);
             await UniTask.WaitUntil(() => _entityManager.GetEntityByType<Owner>().Health <= 0,
                 cancellationToken: cts.Token);
         }

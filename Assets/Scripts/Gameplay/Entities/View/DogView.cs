@@ -39,11 +39,7 @@ namespace Yarde.Gameplay.Entities.View
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            var entity = _entityManager.GetEntityByName<Monster>(hit.gameObject.name);
-            if (entity != null)
-            {
-                _entityManager.AttackEntity(entity, 1);
-            }
+            _entityManager.AttackEntity(hit.gameObject, 1);
         }
     }
 }

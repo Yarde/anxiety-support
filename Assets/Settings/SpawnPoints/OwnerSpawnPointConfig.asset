@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e8b6a59223468785710f8509fc8efb, type: 3}
   m_Name: OwnerSpawnPointConfig
   m_EditorClassIdentifier: 
-  <ViewPrefab>k__BackingField: {fileID: 1899332226407523829, guid: 6493d4a57771cb04b8b683dba0ee28cf, type: 3}
+  <ViewPrefab>k__BackingField:
+  - {fileID: 105782008315912160, guid: 6493d4a57771cb04b8b683dba0ee28cf, type: 3}
   <Type>k__BackingField: 2
+  <Delay>k__BackingField: 0
+  <Repeats>k__BackingField: 0
+  <Cooldown>k__BackingField: 0
+  <Health>k__BackingField: 100

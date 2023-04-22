@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
+using UnityEngine;
 using VContainer;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities.Entity;
@@ -37,15 +38,11 @@ namespace Yarde.Gameplay.Entities
         {
             return _entities.FirstOrDefault(e => e.GetType() == typeof(T)) as T;
         }
-        
-        public T GetEntityByName<T>(string entityName) where T : Entity.Entity
+
+        public void AttackEntity(GameObject hit, int damage)
         {
-            return _entities.FirstOrDefault(e => e.View.name == entityName) as T;
-        }
-        
-        public void AttackEntity(Entity.Entity entity, int damage)
-        {
-            if (entity.TakeDamage(damage))
+            var entity = _entities.FirstOrDefault(e => e.View.gameObject == hit);
+            if (entity != null && entity.TakeDamage(damage))
             {
                 _entities.Remove(entity);
             }
