@@ -8,6 +8,9 @@ namespace Yarde.Gameplay.Entities.View
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
 
+        public bool IsAttackingDistance => _navMeshAgent.hasPath &&
+                                   _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance;
+
         public void SetTarget(EntityView target)
         {
             _navMeshAgent.stoppingDistance = Random.Range(4f, 7f);

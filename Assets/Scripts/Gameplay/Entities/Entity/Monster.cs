@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using VContainer;
@@ -23,6 +25,16 @@ namespace Yarde.Gameplay.Entities.Entity
             Assert.IsNotNull(_monsterView, "View is null");
 
             _monsterView.SetTarget(owner.View);
+            TryAttack(owner, _monsterView.GetCancellationTokenOnDestroy()).Forget();
+        }
+
+        private async UniTaskVoid TryAttack(Owner owner, CancellationToken ctx)
+        {
+            if (_monsterView.IsAttackingDistance && !ctx.IsCancellationRequested)
+            {
+                owner.TakeDamage(1);
+                await UniTask.Delay(1000, cancellationToken: ctx);
+            }
         }
 
         public override bool TakeDamage(int damage)
