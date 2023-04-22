@@ -38,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|walkLikeMan (1)
-      takeName: Armature|walkLikeMan
+      name: walkLikeMan
+      takeName: walkLikeMan
       internalID: -4567650194728345782
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 367
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
