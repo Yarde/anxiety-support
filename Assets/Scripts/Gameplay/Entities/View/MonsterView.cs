@@ -14,7 +14,7 @@ namespace Yarde.Gameplay.Entities.View
             _navMeshAgent.SetDestination(target.transform.position);
         }
 
-        public async UniTask OnDie()
+        public async UniTaskVoid OnDie()
         {
             // play some particles or whatever
         }

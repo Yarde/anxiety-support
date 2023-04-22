@@ -29,7 +29,7 @@ namespace Yarde.Gameplay.Entities.Entity
         }
 
         protected abstract void SetupInternal();
-        public abstract void TriggerDeath();
+        public abstract bool TakeDamage(int damage);
 
 
         private void SpawnEntityViewFromSpawnPoint(IObjectResolver container, SpawnPoint spawnPoint)

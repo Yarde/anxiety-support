@@ -24,7 +24,7 @@ namespace Yarde.Gameplay.Scenes
         public void Start(string questId, Action onSuccess, Action onFail)
         {
             _entityManager.Setup();
-            _cameraManager.SelectTarget(_entityManager.GetEntityByType(typeof(Dog))?.View.transform);
+            _cameraManager.SelectTarget(_entityManager.GetEntityByType<Dog>()?.View.transform);
             _questSystem.StartQuest(questId, onSuccess, onFail);
         }
     }

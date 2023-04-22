@@ -17,8 +17,9 @@ namespace Yarde.Gameplay.Entities.Entity
             _dogView = View as DogView;
         }
 
-        public override void TriggerDeath()
+        public override bool TakeDamage(int damage)
         {
+            return false;
         }
     }
 }

@@ -18,21 +18,23 @@ namespace Yarde.Gameplay.Entities.Entity
         {
             _monsterView = View as MonsterView;
 
-            var owner = _container.Resolve<EntityManager>().GetEntityByType(typeof(Owner));
+            var owner = _container.Resolve<EntityManager>().GetEntityByType<Owner>();
             Assert.IsNotNull(owner, "Owner is null");
             Assert.IsNotNull(_monsterView, "View is null");
 
             _monsterView.SetTarget(owner.View);
         }
 
-        public override async void TriggerDeath()
+        public override bool TakeDamage(int damage)
         {
             Debug.Log($"Monster {_monsterView.name} died");
-            await _monsterView.OnDie();
+            _monsterView.OnDie().Forget();
             if (_monsterView)
             {
                 Object.Destroy(_monsterView.gameObject);
             }
+
+            return true;
         }
     }
 }

@@ -33,20 +33,22 @@ namespace Yarde.Gameplay.Entities
             _entities.Clear();
         }
 
-        public Entity.Entity GetEntityByType(Type entityType)
+        public T GetEntityByType<T>() where T : Entity.Entity
         {
-            return _entities.FirstOrDefault(e => e.GetType() == entityType);
+            return _entities.FirstOrDefault(e => e.GetType() == typeof(T)) as T;
         }
         
-        public Entity.Entity GetEntityByName(string entityName)
+        public T GetEntityByName<T>(string entityName) where T : Entity.Entity
         {
-            return _entities.FirstOrDefault(e => e.View.name == entityName);
+            return _entities.FirstOrDefault(e => e.View.name == entityName) as T;
         }
         
-        public void TryRemoveEntity(Entity.Entity entity)
+        public void AttackEntity(Entity.Entity entity, int damage)
         {
-            _entities.Remove(entity);
-            entity.TriggerDeath();
+            if (entity.TakeDamage(damage))
+            {
+                _entities.Remove(entity);
+            }
         }
 
         public void Setup()

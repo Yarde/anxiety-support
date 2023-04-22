@@ -50,8 +50,9 @@ namespace Yarde.Gameplay.Entities.Entity
             await UniTask.Delay((int)(randomDelay * 1000), cancellationToken: cancellationToken);
         }
 
-        public override void TriggerDeath()
+        public override bool TakeDamage(int damage)
         {
+            return false;
         }
     }
 }

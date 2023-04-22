@@ -18,8 +18,8 @@ namespace Yarde.Gameplay.Quests
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
-            var dog = _entityManager.GetEntityByType(typeof(Dog));
-            var human = _entityManager.GetEntityByType(typeof(Owner));
+            var dog = _entityManager.GetEntityByType<Dog>();
+            var human = _entityManager.GetEntityByType<Owner>();
             await UniTask.WaitUntil(() => (dog.View.transform.position - human.View.transform.position).magnitude < 1,
                 cancellationToken: cts.Token);
         }
