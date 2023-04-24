@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: HumanSpawnPointConfig
   m_EditorClassIdentifier: 
   <ViewPrefab>k__BackingField:
-  - {fileID: 2094659100058096798, guid: fd82c8fd1683f654cbe40dd09205db6d, type: 3}
-  - {fileID: 2094659100058096798, guid: fc01f17d48647f34aa6f606f46bc206f, type: 3}
   - {fileID: 2094659100058096798, guid: e911ed3ec144fbd41a355eeda5f42eb1, type: 3}
   - {fileID: 2094659100058096798, guid: 741cc302175884f0084ace40aecc664f, type: 3}
   <Type>k__BackingField: 1
+  <Delay>k__BackingField: 0
+  <Repeats>k__BackingField: 0
+  <Cooldown>k__BackingField: 0
+  <Health>k__BackingField: 0
