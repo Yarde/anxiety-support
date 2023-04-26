@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: FindOwner
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: FindOwnerScene
+  <SuccessText>k__BackingField: 
+  <FailText>k__BackingField: Too late! Try again
   _timeToFinish: 9999

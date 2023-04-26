@@ -16,7 +16,7 @@ namespace Yarde.Gameplay.Context
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<IScene, GameplayScene>(Lifetime.Scoped);
+            builder.RegisterEntryPoint<GameplayScene>(Lifetime.Scoped);
             builder.Register<EntityManager>(Lifetime.Scoped);
             builder.Register<InputSystem>(Lifetime.Scoped);
             builder.Register<QuestSystem>(Lifetime.Scoped);

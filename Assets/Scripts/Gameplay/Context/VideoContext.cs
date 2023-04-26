@@ -4,6 +4,7 @@ using VContainer;
 using VContainer.Unity;
 using Yarde.Gameplay.Scenes;
 using Yarde.Quests;
+using Yarde.UI;
 
 namespace Yarde.Gameplay.Context
 {
@@ -13,8 +14,10 @@ namespace Yarde.Gameplay.Context
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<IScene, VideoScene>(Lifetime.Scoped);
+            builder.RegisterEntryPoint<VideoScene>(Lifetime.Scoped);
             builder.Register<QuestSystem>(Lifetime.Scoped);
+            
+            builder.RegisterComponentInHierarchy<CanvasManager>();
 
             builder.RegisterComponent(_videoPlayer);
         }

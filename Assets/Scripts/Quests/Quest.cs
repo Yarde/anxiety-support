@@ -8,6 +8,9 @@ namespace Yarde.Quests
     public abstract class Quest : ScriptableObject
     {
         [field: SerializeField] public string SceneName { get; private set; }
+        
+        [field: SerializeField] public string SuccessText { get; private set; }
+        [field: SerializeField] public string FailText { get; private set; }
 
         public event Action OnSucceeded;
         public event Action OnFailed;
@@ -44,7 +47,6 @@ namespace Yarde.Quests
             if (!cts.IsCancellationRequested)
             {
                 cts.Cancel();
-                await UniTask.Delay(2000);
                 OnSucceeded?.Invoke();
             }
         }
@@ -55,7 +57,6 @@ namespace Yarde.Quests
             if (!cts.IsCancellationRequested)
             {
                 cts.Cancel();
-                await UniTask.Delay(2000);
                 OnFailed?.Invoke();
             }
         }

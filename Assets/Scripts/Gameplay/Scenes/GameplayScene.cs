@@ -1,31 +1,31 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using VContainer;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities;
 using Yarde.Gameplay.Entities.Entity;
 using Yarde.Quests;
+using Yarde.UI;
 
 namespace Yarde.Gameplay.Scenes
 {
     [UsedImplicitly]
-    public class GameplayScene : IScene
+    public class GameplayScene : BaseScene
     {
-        private readonly QuestSystem _questSystem;
         private readonly EntityManager _entityManager;
         private readonly CameraManager _cameraManager;
 
-        public GameplayScene(QuestSystem questSystem, EntityManager entityManager, CameraManager cameraManager)
+        public GameplayScene(GameplayFlow gameplayFlow, QuestSystem questSystem, EntityManager entityManager,
+            CameraManager cameraManager, CanvasManager canvasManager) : base(gameplayFlow, questSystem, canvasManager)
         {
-            _questSystem = questSystem;
             _entityManager = entityManager;
             _cameraManager = cameraManager;
         }
 
-        public void Start(string questId, Action onSuccess, Action onFail)
+
+        protected override void InternalStart()
         {
             _entityManager.Setup();
             _cameraManager.SelectTarget(_entityManager.GetEntityByType<Dog>()?.View.transform);
-            _questSystem.StartQuest(questId, onSuccess, onFail);
         }
     }
 }

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: FightMonstersQuest
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: FightMonstarsScene
+  <SuccessText>k__BackingField: 
+  <FailText>k__BackingField: Try again

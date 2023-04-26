@@ -30,7 +30,7 @@ namespace Yarde.Scene
             _loadingScreen ??= await Initialize();
             var showAnimation = _scenesWithAnimation.Contains(sceneToLoad);
 
-            await _loadingScreen.StartLoading(showAnimation);
+            var task = _loadingScreen.StartLoading(showAnimation);
 
             if (!string.IsNullOrEmpty(sceneToUnload))
             {
@@ -40,6 +40,7 @@ namespace Yarde.Scene
 
             Debug.Log($"Loading scene {sceneToLoad}");
             await UniTask.WhenAll(
+                task,
                 SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive).ToUniTask(),
                 showAnimation ?
                 UniTask.Delay(TimeSpan.FromSeconds(MinAnimationTimeWithAnimation))

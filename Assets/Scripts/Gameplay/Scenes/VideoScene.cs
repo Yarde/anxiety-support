@@ -1,22 +1,20 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using VContainer;
 using Yarde.Quests;
+using Yarde.UI;
 
 namespace Yarde.Gameplay.Scenes
 {
     [UsedImplicitly]
-    public class VideoScene : IScene
+    public class VideoScene : BaseScene
     {
-        private readonly QuestSystem _questSystem;
-
-        public VideoScene(QuestSystem questSystem)
+        public VideoScene(GameplayFlow gameplayFlow, QuestSystem questSystem, CanvasManager canvasManager) 
+            : base(gameplayFlow, questSystem, canvasManager)
         {
-            _questSystem = questSystem;
         }
 
-        public void Start(string questId, Action onSuccess, Action onFail)
+        protected override void InternalStart()
         {
-            _questSystem.StartQuest(questId, onSuccess, onFail);
         }
     }
 }
