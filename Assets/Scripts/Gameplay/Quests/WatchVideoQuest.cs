@@ -16,11 +16,14 @@ namespace Yarde.Gameplay.Quests
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
+            _videoPlayer.gameObject.SetActive(true);
             _videoPlayer.clip = _videoClip;
             var length = (int)(_videoClip.length * 1000);
             Debug.Log($"Playing video {_videoClip.name}, length: {length} ms");
             _videoPlayer.Play();
             await UniTask.Delay(length, cancellationToken: cts.Token);
+            _videoPlayer.gameObject.SetActive(false);
+
         }
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)

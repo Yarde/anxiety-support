@@ -10,7 +10,7 @@ namespace Yarde.Scene
     public class SceneController
     {
         private const string LoadingSceneName = "LoadingScene";
-        private const int MinAnimationTimeWithAnimation = 5;
+        private const int MinAnimationTimeWithAnimation = 3;
 
         private LoadingScreen _loadingScreen;
 
