@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 1045174917871341474}
-  _animator: {fileID: 0}
+  _animator: {fileID: 387300543810742340}
 --- !u!143 &2094659100058096799
 CharacterController:
   m_ObjectHideFlags: 0
