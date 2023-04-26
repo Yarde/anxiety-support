@@ -9,6 +9,9 @@ namespace Yarde.Gameplay.Entities.Entity
 {
     public class Human : Entity
     {
+        private const float PlaneSize = 15f;
+        private const float ChanceOfMoving = 0.4f;
+
         private HumanView _humanView;
 
         public Human(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
@@ -34,9 +37,10 @@ namespace Yarde.Gameplay.Entities.Entity
         private async UniTask DoMove(CancellationToken cancellationToken)
         {
             var isMoving = Random.Range(0f, 1f);
-            if (isMoving > 0.5f)
+            if (isMoving < ChanceOfMoving)
             {
-                var randomPosition = new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f));
+                var randomPosition = new Vector3(Random.Range(-PlaneSize, PlaneSize), 0,
+                    Random.Range(-PlaneSize, PlaneSize));
                 _humanView.SetTarget(randomPosition);
                 await UniTask.WaitUntil(_humanView.IsReachedTarget, cancellationToken: cancellationToken);
             }
@@ -45,9 +49,8 @@ namespace Yarde.Gameplay.Entities.Entity
             {
                 return;
             }
-
-            var randomDelay = Random.Range(1f, 5f);
-            await UniTask.Delay((int)(randomDelay * 1000), cancellationToken: cancellationToken);
+            
+            await UniTask.Delay((int)(Random.Range(1f, 5f) * 1000), cancellationToken: cancellationToken);
         }
 
         public override bool TakeDamage(int damage)

@@ -44,6 +44,7 @@ namespace Yarde.Quests
             if (!cts.IsCancellationRequested)
             {
                 cts.Cancel();
+                await UniTask.Delay(2000);
                 OnSucceeded?.Invoke();
             }
         }
@@ -54,6 +55,7 @@ namespace Yarde.Quests
             if (!cts.IsCancellationRequested)
             {
                 cts.Cancel();
+                await UniTask.Delay(2000);
                 OnFailed?.Invoke();
             }
         }

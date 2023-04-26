@@ -1,8 +1,9 @@
-﻿using JetBrains.Annotations;
+﻿using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
-using Yarde.Gameplay.Entities.Entity;
 using Yarde.Input;
+using Yarde.Utils.Extensions;
 
 namespace Yarde.Gameplay.Entities.View
 {
@@ -20,6 +21,9 @@ namespace Yarde.Gameplay.Entities.View
         [SerializeField] private float _turnSmoothTime = 0.1f;
 
         private CharacterController _characterController;
+
+        private bool _isAttacking;
+        
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         private void Awake()
@@ -31,15 +35,23 @@ namespace Yarde.Gameplay.Entities.View
         {
             _animator.SetFloat(Speed, _inputSystem.Input.magnitude);
 
-            if (!_inputSystem.IsMoving) return;
+            if (!_inputSystem.IsMoving || _isAttacking) return;
 
             _characterController.Move(_inputSystem.Input * (_speed * Time.fixedDeltaTime));
             transform.rotation = _inputSystem.LookRotationSmoothed(transform.eulerAngles.y, _turnSmoothTime);
         }
 
-        private void OnControllerColliderHit(ControllerColliderHit hit)
+        private async void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            if (!hit.gameObject.CompareTag("Monster") || _isAttacking)
+            {
+                return;
+            }
+            
+            _isAttacking = true;
             _entityManager.AttackEntity(hit.gameObject, 1);
+            await _animator.TriggerAndWaitForStateEnd("Attack", this.GetCancellationTokenOnDestroy()).SuppressCancellationThrow();
+            _isAttacking = false;
         }
     }
 }

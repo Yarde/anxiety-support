@@ -12,6 +12,9 @@ namespace Yarde.Input
 
         [SerializeField] protected RectTransform _background;
         [SerializeField] private RectTransform _handle;
+        
+        [Header("Display options")]
+        [SerializeField] private bool _autoHide;
 
         private RectTransform _baseRect;
         private Canvas _canvas;
@@ -31,13 +34,16 @@ namespace Yarde.Input
             _handle.pivot = center;
             _radius = _background.sizeDelta / 2;
 
-            TurnOff();
+            Reset();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             _background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
-            _background.gameObject.SetActive(true);
+            if (_autoHide)
+            {
+                _background.gameObject.SetActive(true);
+            }
             OnDrag(eventData);
         }
 
@@ -59,14 +65,17 @@ namespace Yarde.Input
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            TurnOff();
+            Reset();
         }
 
-        private void TurnOff()
+        private void Reset()
         {
             _input = Vector2.zero;
             _handle.anchoredPosition = Vector2.zero;
-            _background.gameObject.SetActive(false);
+            if (_autoHide)
+            {
+                _background.gameObject.SetActive(false);
+            }
         }
 
         private Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

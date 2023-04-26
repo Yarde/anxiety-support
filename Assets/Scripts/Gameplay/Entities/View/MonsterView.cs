@@ -9,18 +9,20 @@ namespace Yarde.Gameplay.Entities.View
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
+        [SerializeField] private CharacterController _characterController;
 
         public bool IsAttackingDistance => _navMeshAgent.hasPath &&
                                            _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance;
 
         public void SetTarget(EntityView target)
         {
-            _navMeshAgent.stoppingDistance = Random.Range(4f, 7f);
+            _navMeshAgent.stoppingDistance = Random.Range(3f, 5f);
             _navMeshAgent.SetDestination(target.transform.position);
         }
 
         public async UniTaskVoid OnDie()
         {
+            _characterController.enabled = false;
             await _animator.TriggerAndWaitForStateEnd("Die", this.GetCancellationTokenOnDestroy());
             Destroy(gameObject);
         }

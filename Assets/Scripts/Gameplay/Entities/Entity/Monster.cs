@@ -39,7 +39,7 @@ namespace Yarde.Gameplay.Entities.Entity
                 }
                 else
                 {
-                    await UniTask.Delay(1000, cancellationToken: ctx);
+                    await UniTask.Delay((int)(Random.Range(1f, 3f) * 1000), cancellationToken: ctx);
                 }
             }
         }

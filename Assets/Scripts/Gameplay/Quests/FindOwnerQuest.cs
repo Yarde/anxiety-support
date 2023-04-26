@@ -20,7 +20,7 @@ namespace Yarde.Gameplay.Quests
         {
             var dog = _entityManager.GetEntityByType<Dog>();
             var human = _entityManager.GetEntityByType<Owner>();
-            await UniTask.WaitUntil(() => (dog.View.transform.position - human.View.transform.position).magnitude < 1,
+            await UniTask.WaitUntil(() => (dog.View.transform.position - human.View.transform.position).magnitude < 2,
                 cancellationToken: cts.Token);
         }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1995938677812727857}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 1995938677812727857}
   _animator: {fileID: 117069797641363767}
+  _characterController: {fileID: 1327140938146965223}
 --- !u!143 &1327140938146965223
 CharacterController:
   m_ObjectHideFlags: 0
@@ -62,12 +63,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.7, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1995938677812727857
 NavMeshAgent:
   m_ObjectHideFlags: 0
