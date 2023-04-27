@@ -5,6 +5,7 @@ using UnityEngine;
 using VContainer;
 using Yarde.Gameplay.Entities;
 using Yarde.Gameplay.Entities.Entity;
+using Yarde.Light;
 using Yarde.Quests;
 
 namespace Yarde.Gameplay.Quests
@@ -13,9 +14,11 @@ namespace Yarde.Gameplay.Quests
     public class FightMonstersQuest : Quest
     {
         [Inject] [UsedImplicitly] private EntityManager _entityManager;
+        [Inject] [UsedImplicitly] private EffectManager _effectManager;
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
+            AdjustLight(cts).Forget();
             await UniTask.Delay(10000);
             await UniTask.WaitUntil(() => _entityManager.GetEntityByType<Monster>() == null);
         }
@@ -26,6 +29,17 @@ namespace Yarde.Gameplay.Quests
                 cancellationToken: cts.Token);
             await UniTask.WaitUntil(() => _entityManager.GetEntityByType<Owner>().Health <= 0,
                 cancellationToken: cts.Token);
+        }
+
+        private async UniTaskVoid AdjustLight(CancellationTokenSource cts)
+        {
+            var owner = _entityManager.GetEntityByType<Owner>();
+            while (!cts.IsCancellationRequested)
+            {
+                var state = owner.Health / 50f;
+                _effectManager.SetIntensity(state);
+                await UniTask.Delay(100);
+            }
         }
     }
 }

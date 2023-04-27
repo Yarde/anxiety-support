@@ -5,6 +5,7 @@ using Yarde.Camera;
 using Yarde.Gameplay.Entities;
 using Yarde.Gameplay.Scenes;
 using Yarde.Input;
+using Yarde.Light;
 using Yarde.Quests;
 using Yarde.UI;
 
@@ -24,6 +25,7 @@ namespace Yarde.Gameplay.Context
             builder.RegisterComponentInHierarchy<CanvasManager>();
             builder.RegisterComponentInHierarchy<CameraManager>();
             builder.RegisterComponentInHierarchy<GameplayPlane>();
+            builder.RegisterComponentInHierarchy<EffectManager>();
 
             builder.Register(InstantiateJoystick, Lifetime.Scoped);
         }

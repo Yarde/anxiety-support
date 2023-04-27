@@ -5,6 +5,7 @@ using UnityEngine;
 using VContainer;
 using Yarde.Gameplay.Entities;
 using Yarde.Gameplay.Entities.Entity;
+using Yarde.Light;
 using Yarde.Quests;
 
 namespace Yarde.Gameplay.Quests
@@ -15,18 +16,34 @@ namespace Yarde.Gameplay.Quests
         [SerializeField] private float _timeToFinish;
 
         [Inject] [UsedImplicitly] private EntityManager _entityManager;
+        [Inject] [UsedImplicitly] private EffectManager _effectManager;
+        
+        private Dog _dog;
+        private Owner _owner;
+
+        private float Distance => (_dog.View.transform.position - _owner.View.transform.position).magnitude;
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
-            var dog = _entityManager.GetEntityByType<Dog>();
-            var human = _entityManager.GetEntityByType<Owner>();
-            await UniTask.WaitUntil(() => (dog.View.transform.position - human.View.transform.position).magnitude < 2,
-                cancellationToken: cts.Token);
+            _dog = _entityManager.GetEntityByType<Dog>();
+            _owner = _entityManager.GetEntityByType<Owner>();
+            AdjustLight(cts).Forget();
+            await UniTask.WaitUntil(() => Distance < 2, cancellationToken: cts.Token);
         }
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)
         {
             await UniTask.WaitWhile(() => (_timeToFinish -= Time.deltaTime) > 0, cancellationToken: cts.Token);
+        }
+        
+        private async UniTaskVoid AdjustLight(CancellationTokenSource cts)
+        {
+            while (!cts.IsCancellationRequested)
+            {
+                var state = Mathf.InverseLerp(30f, 5f, Distance);
+                _effectManager.SetIntensity(state);
+                await UniTask.Delay(100);
+            }
         }
     }
 }
