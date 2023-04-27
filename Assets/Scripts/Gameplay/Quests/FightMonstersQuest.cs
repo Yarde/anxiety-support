@@ -36,7 +36,7 @@ namespace Yarde.Gameplay.Quests
             var owner = _entityManager.GetEntityByType<Owner>();
             while (!cts.IsCancellationRequested)
             {
-                var state = owner.Health / 50f;
+                var state = owner.Health / 100f + 0.5f;
                 _effectManager.SetIntensity(state);
                 await UniTask.Delay(100);
             }

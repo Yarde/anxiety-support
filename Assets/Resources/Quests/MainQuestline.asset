@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MainQuestline
   m_EditorClassIdentifier: 
   _quests:
-  - {fileID: 11400000, guid: e9e837c94b7a64735b97b1b4b713e31b, type: 2}
   - {fileID: 11400000, guid: e10c7e2352a404219b428c2d1c8f4b75, type: 2}
-  - {fileID: 11400000, guid: 692f01eb2f5b54746baa2f94dd211a68, type: 2}
   - {fileID: 11400000, guid: 0bf0c05895c1e4a5b8e7b5f01a697864, type: 2}
+  - {fileID: 11400000, guid: e9e837c94b7a64735b97b1b4b713e31b, type: 2}
+  - {fileID: 11400000, guid: 692f01eb2f5b54746baa2f94dd211a68, type: 2}
   - {fileID: 11400000, guid: 99466c71fcbf04d57914df604cde231d, type: 2}

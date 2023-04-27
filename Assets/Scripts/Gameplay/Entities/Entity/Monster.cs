@@ -37,10 +37,8 @@ namespace Yarde.Gameplay.Entities.Entity
                     owner.TakeDamage(1);
                     await _monsterView.Attack();
                 }
-                else
-                {
-                    await UniTask.Delay((int)(Random.Range(1f, 3f) * 1000), cancellationToken: ctx);
-                }
+
+                await UniTask.Delay((int)(Random.Range(1f, 3f) * 1000), cancellationToken: ctx);
             }
         }
 
@@ -52,7 +50,7 @@ namespace Yarde.Gameplay.Entities.Entity
             {
                 return false;
             }
-            
+
             Debug.Log($"Monster {_monsterView.name} died");
             _monsterView.OnDie().Forget();
 

@@ -28,6 +28,13 @@ namespace Yarde.Utils.Extensions
             image.color = color;
         }
         
+        public static void SetAlpha(this Material material, float alpha)
+        {
+            var color = material.color;
+            color.a = alpha;
+            material.color = color;
+        }
+        
         public static void SetAlpha(this CanvasGroup group, float alpha)
         {
             group.alpha = alpha;
