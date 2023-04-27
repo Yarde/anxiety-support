@@ -1,4 +1,3 @@
-using VContainer;
 using VContainer.Unity;
 using Yarde.Quests;
 using Yarde.UI;
@@ -8,7 +7,7 @@ namespace Yarde.Gameplay.Scenes
     public abstract class BaseScene : IStartable
     {
         protected abstract void InternalStart();
-        
+
         private readonly QuestSystem _questSystem;
         private readonly CanvasManager _canvasManager;
         private readonly GameplayFlow _gameplayFlow;

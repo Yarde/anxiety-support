@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Yarde.Scene
 {
     public class LoadingScreen : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _background;
-        [SerializeField] private SpriteRenderer _renderer;
+        [SerializeField] private Graphic _background;
+        [SerializeField] private Graphic _renderer;
         [SerializeField] private float _fadeTime = 0.2f;
 
         public async UniTask StartLoading(bool showAnimation)
