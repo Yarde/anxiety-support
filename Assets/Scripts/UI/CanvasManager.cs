@@ -15,7 +15,7 @@ namespace Yarde.UI
             _canvasGroup.alpha = 0f;
         }
 
-        public async UniTask ShowInfo(string info)
+        public async UniTask ShowInfo(string info, Color currentQuestColor)
         {
             _infoText.text = info;
             await _canvasGroup.DOFade(1f, 0.3f);

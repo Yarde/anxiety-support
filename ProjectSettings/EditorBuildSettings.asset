@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightMonstarsScene.unity
     guid: e6dc6b1f679574781afb998bbba01719
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 832431ce5cc53435a83b0586424c74af
   m_configObjects: {}

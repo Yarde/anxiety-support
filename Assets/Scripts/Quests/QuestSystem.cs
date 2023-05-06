@@ -14,7 +14,7 @@ namespace Yarde.Quests
     public class QuestSystem : IDisposable
     {
         private const string QuestsPath = "Quests/";
-        
+
         private readonly List<Quest> _activeQuests = new();
         private readonly IObjectResolver _container;
 
@@ -39,6 +39,7 @@ namespace Yarde.Quests
             var quest = _container.Instantiate(questData);
 
             SubscribeToQuest(questId, onSuccess, onFail, quest);
+            Debug.Log($"Starting quest {questId}");
             quest.Run().Forget();
 
             _activeQuests.Add(quest);

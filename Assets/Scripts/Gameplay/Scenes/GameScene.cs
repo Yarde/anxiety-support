@@ -27,9 +27,10 @@ namespace Yarde.Gameplay.Scenes
 
         private async void OnQuestSucceed()
         {
-            if (!string.IsNullOrEmpty(_gameplayFlow.CurrentQuest.SuccessText))
+            var currentQuest = _gameplayFlow.CurrentQuest;
+            if (!string.IsNullOrEmpty(currentQuest.SuccessText))
             {
-                await _canvasManager.ShowInfo(_gameplayFlow.CurrentQuest.SuccessText);
+                await _canvasManager.ShowInfo(currentQuest.SuccessText, currentQuest.Color);
             }
 
             _gameplayFlow.StartNextQuest();
@@ -37,9 +38,10 @@ namespace Yarde.Gameplay.Scenes
 
         private async void OnQuestFailed()
         {
-            if (!string.IsNullOrEmpty(_gameplayFlow.CurrentQuest.FailText))
+            var currentQuest = _gameplayFlow.CurrentQuest;
+            if (!string.IsNullOrEmpty(currentQuest.FailText))
             {
-                await _canvasManager.ShowInfo(_gameplayFlow.CurrentQuest.FailText);
+                await _canvasManager.ShowInfo(currentQuest.FailText, currentQuest.Color);
             }
 
             _gameplayFlow.RestartQuest();

@@ -15,4 +15,5 @@ MonoBehaviour:
   <SceneName>k__BackingField: FindOwnerScene
   <SuccessText>k__BackingField: 
   <FailText>k__BackingField: Too late! Try again
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 0}
   _timeToFinish: 9999

@@ -11,6 +11,7 @@ namespace Yarde.Quests
         
         [field: SerializeField] public string SuccessText { get; private set; }
         [field: SerializeField] public string FailText { get; private set; }
+        [field: SerializeField] public Color Color { get; private set; }
 
         public event Action OnSucceeded;
         public event Action OnFailed;

@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c6f9926f744a3196c9ca7774df2508, type: 3}
-  m_Name: FightMonstersQuest
+  m_Script: {fileID: 11500000, guid: 382c4566b82043c9990adc4c77939f6c, type: 3}
+  m_Name: CreditsQuest
   m_EditorClassIdentifier: 
-  <SceneName>k__BackingField: FightMonstarsScene
+  <SceneName>k__BackingField: CreditsScene
   <SuccessText>k__BackingField: 
-  <FailText>k__BackingField: Try again
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 0}
+  <FailText>k__BackingField: 
