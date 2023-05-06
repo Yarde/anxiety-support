@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using Yarde.Audio;
 using Yarde.Gameplay;
 using Yarde.Quests;
 using Yarde.Scene;
@@ -22,6 +23,7 @@ namespace Yarde.DependencyInjection
             builder.Register<SceneController>(Lifetime.Singleton);
             builder.Register<GameplayFlow>(Lifetime.Singleton);
             builder.RegisterInstance(_questline);
+            builder.RegisterComponentInHierarchy<AudioManager>();
         }
     }
 }

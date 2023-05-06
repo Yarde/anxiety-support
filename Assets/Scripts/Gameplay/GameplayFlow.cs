@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
-using VContainer.Unity;
+using VContainer;
+using Yarde.Audio;
 using Yarde.Quests;
 using Yarde.Scene;
 
@@ -9,6 +10,8 @@ namespace Yarde.Gameplay
     [UsedImplicitly]
     public class GameplayFlow
     {
+        [Inject] private AudioManager _audioManager;
+        
         private readonly Questline _questline;
         private readonly SceneController _sceneController;
 
@@ -23,6 +26,7 @@ namespace Yarde.Gameplay
 
         public void Start()
         {
+            _audioManager.PlayMusic("ambient");
             StartQuest(_currentQuestIndex).Forget();
         }
         
