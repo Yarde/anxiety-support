@@ -12,9 +12,9 @@ namespace Yarde.Light
 
         public void SetIntensity(float intensity)
         {
-            _volume.weight = 1 - intensity;
+            _volume.weight = 1 - intensity / 2;
             _light.color = new Color(intensity, intensity, intensity);
-            _crack.material.SetAlpha(1.5f - intensity);
+            _crack.material.SetAlpha(1f - intensity);
         }
     }
 }

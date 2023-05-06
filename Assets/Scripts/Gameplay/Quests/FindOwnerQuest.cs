@@ -33,14 +33,21 @@ namespace Yarde.Gameplay.Quests
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)
         {
-            await UniTask.WaitWhile(() => (_timeToFinish -= Time.deltaTime) > 0, cancellationToken: cts.Token);
+            bool LoosCondition()
+            {
+                var outOfTime = (_timeToFinish -= Time.deltaTime) <= 0;
+                var tooFar = Distance > 40;
+                return outOfTime || tooFar;
+            }
+            
+            await UniTask.WaitUntil(LoosCondition, cancellationToken: cts.Token);
         }
         
         private async UniTaskVoid AdjustLight(CancellationTokenSource cts)
         {
             while (!cts.IsCancellationRequested)
             {
-                var state = Mathf.InverseLerp(30f, 5f, Distance);
+                var state = Mathf.InverseLerp(40f, 15f, Distance);
                 _effectManager.SetIntensity(state);
                 await UniTask.Delay(100);
             }
