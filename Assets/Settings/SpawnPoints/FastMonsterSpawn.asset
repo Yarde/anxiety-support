@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6e8b6a59223468785710f8509fc8efb, type: 3}
-  m_Name: MonsterSpawnPointConfig
+  m_Name: FastMonsterSpawn
   m_EditorClassIdentifier: 
   <ViewPrefab>k__BackingField:
   - {fileID: 4279733482620833238, guid: 1036f492d59ca0f48831488a4b0f1e89, type: 3}
   <Type>k__BackingField: 3
-  <Delay>k__BackingField: 2
-  <Repeats>k__BackingField: 4
-  <Cooldown>k__BackingField: 6
+  <Delay>k__BackingField: 0
+  <Repeats>k__BackingField: 0
+  <Cooldown>k__BackingField: 12
   <Health>k__BackingField: 1
