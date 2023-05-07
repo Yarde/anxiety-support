@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4076372459382516430}
+  _attackClips:
+  - {fileID: 8300000, guid: 2bd774d4c494be549b0b8b09b9654537, type: 3}
+  - {fileID: 8300000, guid: 176c47af4838a194da016f2062c620b4, type: 3}
+  - {fileID: 8300000, guid: d65696c67fc99774fb3b217ad6e49d0b, type: 3}
+  - {fileID: 8300000, guid: 2654dfcbba8995b439ce3892b14b9910, type: 3}
   _speed: 5
   _turnSmoothTime: 0.1
 --- !u!143 &5739466100987055423
