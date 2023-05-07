@@ -50,6 +50,8 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 1995938677812727857}
   _animator: {fileID: 5050257585591325789}
   _characterController: {fileID: 1327140938146965223}
+  _attackClip: {fileID: 8300000, guid: cc0ac2347dc8fb94badad6c667a4f17a, type: 3}
+  _dieClip: {fileID: 8300000, guid: 67fccbc0b9469214aa20807ba7c085d9, type: 3}
 --- !u!143 &1327140938146965223
 CharacterController:
   m_ObjectHideFlags: 0
