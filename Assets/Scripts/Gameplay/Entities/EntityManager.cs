@@ -21,6 +21,8 @@ namespace Yarde.Gameplay.Entities
         private readonly List<Entity.Entity> _entities;
         private readonly IObjectResolver _container;
 
+        private int _spawnCouter;
+
         public EntityManager(IObjectResolver container, CameraManager cameraManager)
         {
             _container = container;
@@ -59,6 +61,7 @@ namespace Yarde.Gameplay.Entities
             var spawnPoints = Object.FindObjectsOfType<SpawnPoint>();
             foreach (var spawnPoint in spawnPoints)
             {
+                _spawnCouter += spawnPoint.Repeats > 0 ? (int)spawnPoint.Repeats : 1;
                 if (spawnPoint.Delay > 0)
                 {
                     SpawnDelayedEntity(spawnPoint, spawnPoint.Delay).Forget();
@@ -92,7 +95,8 @@ namespace Yarde.Gameplay.Entities
         {
             var entity = CreateEntity(spawnPoint.Type, _container, spawnPoint);
             entity.Awake();
-            
+
+            _spawnCouter--;
             spawnPoint.Repeats--;
             if (spawnPoint.Repeats > 0)
             {
@@ -110,8 +114,14 @@ namespace Yarde.Gameplay.Entities
                 EntityType.Human => new Human(container, spawnPoint),
                 EntityType.Owner => new Owner(container, spawnPoint),
                 EntityType.Monster => new Monster(container, spawnPoint),
+                EntityType.BossMonster => new BossMonster(container, spawnPoint),
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
+        }
+
+        public bool AnyMonsterLeft()
+        {
+            return _spawnCouter > 0 || _entities.Any(e => e is Monster);
         }
     }
 }

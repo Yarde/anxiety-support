@@ -10,7 +10,7 @@ namespace Yarde.Gameplay.Entities.Entity
 {
     public class Monster : Entity
     {
-        private MonsterView _monsterView;
+        protected MonsterView _monsterView;
 
         public Monster(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
@@ -34,12 +34,17 @@ namespace Yarde.Gameplay.Entities.Entity
             {
                 if (_monsterView.IsAttackingDistance)
                 {
-                    owner.TakeDamage(1);
-                    await _monsterView.Attack();
+                    await Attack(owner);
                 }
 
                 await UniTask.Delay((int)(Random.Range(1f, 3f) * 1000), cancellationToken: ctx);
             }
+        }
+
+        protected virtual async UniTask Attack(Owner owner)
+        {
+            owner.TakeDamage(1);
+            await _monsterView.Attack();
         }
 
         public override bool TakeDamage(int damage)

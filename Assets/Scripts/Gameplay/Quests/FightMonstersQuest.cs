@@ -20,7 +20,7 @@ namespace Yarde.Gameplay.Quests
         {
             AdjustLight(cts).Forget();
             await UniTask.Delay(10000);
-            await UniTask.WaitUntil(() => _entityManager.GetEntityByType<Monster>() == null);
+            await UniTask.WaitWhile(() => _entityManager.AnyMonsterLeft());
         }
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)

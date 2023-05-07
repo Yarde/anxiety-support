@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using VContainer;
@@ -15,11 +18,25 @@ namespace Yarde.Gameplay.Entities.View
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private AudioClip _attackClip;
         [SerializeField] private AudioClip _dieClip;
-        
-        [Inject] private AudioManager _audioManager;
+
+        [Inject] [UsedImplicitly] private AudioManager _audioManager;
+
+        private List<Material> _materials;
 
         public bool IsAttackingDistance => _navMeshAgent.hasPath &&
                                            _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance;
+
+        private void Awake()
+        {
+            _materials = new List<Material>();
+            var renderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (var meshRenderer in renderers)
+            {
+                var newMaterial = new Material(meshRenderer.material);
+                meshRenderer.material = newMaterial;
+                _materials.Add(newMaterial);
+            }
+        }
 
         public void SetTarget(EntityView target)
         {
@@ -31,7 +48,11 @@ namespace Yarde.Gameplay.Entities.View
         {
             _audioManager.PlayClip(AudioType.Sfx, _dieClip);
             _characterController.enabled = false;
-            await _animator.TriggerAndWaitForStateEnd("Die", this.GetCancellationTokenOnDestroy());
+            var animationTask = _animator.TriggerAndWaitForStateEnd("Die", this.GetCancellationTokenOnDestroy());
+
+            await UniTask.WhenAny(animationTask, UniTask.Delay(1000));
+            await Fade(0, 0.5f);
+
             Destroy(gameObject);
         }
 
@@ -39,6 +60,16 @@ namespace Yarde.Gameplay.Entities.View
         {
             _audioManager.PlayClip(AudioType.Sfx, _attackClip);
             await _animator.TriggerAndWaitForStateEnd("Attack", this.GetCancellationTokenOnDestroy());
+        }
+
+        public async UniTask Fade(float value, float duration)
+        {
+            foreach (var material in _materials)
+            {
+                material.DOFade(value, duration);
+            }
+
+            await UniTask.Delay(duration.ToMilliseconds());
         }
     }
 }

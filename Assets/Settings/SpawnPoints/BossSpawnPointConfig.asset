@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ViewPrefab>k__BackingField:
   - {fileID: 4279733482620833238, guid: 579037b14dfe47b49a4f685b56c50172, type: 3}
-  <Type>k__BackingField: 3
+  <Type>k__BackingField: 4
   <Delay>k__BackingField: 35
   <Repeats>k__BackingField: 0
   <Cooldown>k__BackingField: 0

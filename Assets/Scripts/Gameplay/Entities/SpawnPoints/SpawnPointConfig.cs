@@ -21,6 +21,7 @@ namespace Yarde.Gameplay.Entities.SpawnPoints
         Dog,
         Human,
         Owner,
-        Monster
+        Monster,
+        BossMonster
     }
 }
