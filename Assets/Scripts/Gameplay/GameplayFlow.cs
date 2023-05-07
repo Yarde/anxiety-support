@@ -26,7 +26,7 @@ namespace Yarde.Gameplay
 
         public void Start()
         {
-            _audioManager.PlayMusic("ambient");
+            _audioManager.PlayFromResources("ambient", AudioType.Music);
             StartQuest(_currentQuestIndex).Forget();
         }
         

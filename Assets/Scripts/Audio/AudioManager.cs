@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -15,26 +16,45 @@ namespace Yarde.Audio
         {
             _musicSource.loop = true;
         }
-
-        public void PlayMusic(string trackName)
-        {
-            Debug.Log($"Playing music {trackName}");
-            var clip = Resources.Load<AudioClip>($"Audio/Music/{trackName}");
-            Assert.IsNotNull(clip, $"Clip {trackName} not found");
-            _musicSource.clip = clip;
-            _musicSource.Play();
-        }
         
-        public void PlaySfx(string trackName)
+        public void PlayFromResources(string trackName, AudioType type)
         {
-            Debug.Log($"Playing sfx {trackName} on source {_sfxIndex + 1}");
-            var source = _sfxSources[_sfxIndex];
-            var clip = Resources.Load<AudioClip>($"Audio/Sfx/{trackName}");
+            Debug.Log($"Playing {type} {trackName}");
+            var clip = Resources.Load<AudioClip>($"Audio/{type}/{trackName}");
             Assert.IsNotNull(clip, $"Clip {trackName} not found");
+
+            PlayClip(type, clip);
+        }
+
+        public void PlayClip(AudioType type, AudioClip clip)
+        {
+            if (clip == null)
+            {
+                return;
+            }
+            var source = GetSource(type);
             source.clip = clip;
             source.Play();
-            
-            _sfxIndex = (_sfxIndex + 1) % _sfxSources.Count;
         }
+
+        private AudioSource GetSource(AudioType type)
+        {
+            switch (type)
+            {
+                case AudioType.Music:
+                    return _musicSource;
+                case AudioType.Sfx:
+                    _sfxIndex = (_sfxIndex + 1) % _sfxSources.Count;
+                    return _sfxSources[_sfxIndex];
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
+    }
+    
+    public enum AudioType
+    {
+        Music,
+        Sfx
     }
 }
