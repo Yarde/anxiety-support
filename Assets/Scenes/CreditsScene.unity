@@ -256,6 +256,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 895124020}
     m_Modifications:
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_text
+      value: "An emotional support animal is an animal companion that offers some
+        type of benefit to an individual with some form of disability. The animal
+        is intended to provide companionship and support that will help alleviate
+        at least one aspect of the disability.\r \nDogs are the most common type
+        of emotional support animal, but cats are quite common as well. Other types
+        of animals, such as miniature horses, can also serve as ESAs."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
@@ -1380,6 +1389,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 895124020}
     m_Modifications:
+    - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_text
+      value: 'While emotional support animals and service animals share some similarities,
+        there are important distinctions between the two. Emotional support animals
+        are intended to provide companionship and support. On the other hand, service
+        animals assist individuals with disabilities by performing specific tasks.
+        Service animals have been specially trained to perform a service for a person
+        with some form of disability. Functions that a service animal might perform
+        include alerting a person about a sound, guiding a person along the street,
+        pressing an elevator button, retrieving items, alerting others or standing
+        guard if the individual is experiencing a seizure, or reminding the individual
+        to take his or her medication.
+
+        Emotional support animals, on the
+        other hand, are there to provide companionship aimed at alleviating distress
+        or providing some other type of relief. '
+      objectReference: {fileID: 0}
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1403,6 +1429,10 @@ PrefabInstance:
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793637877733882493, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_text
+      value: EMOTIONAL VS SERVICE ANIMALS
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878127849510, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_Name
@@ -1503,6 +1533,10 @@ PrefabInstance:
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1250
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1993,6 +2027,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 895124020}
     m_Modifications:
+    - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_text
+      value: 'Benefits of an emotional support animal
+
+        Why would an individual
+        choose to use an emotional support animal? Research has long supported the
+        idea that animals can provide significant mental health benefits. One research
+        review found that owning a pet has positive effects on mental health by fostering
+        emotional connectivity and helping people manage in times of crisis. Some
+        of the other benefits that emotional support animals may provide include:
+
+
+        *
+        Less anxiety. Simply petting an animal can create a relaxation response and
+        elevate mood.
+
+
+        * Trauma support. Pets can provide comfort to people
+        who are dealing with difficult situations.
+
+
+        * Improved physical
+        health. Studies have found that emotional support animals help to lower blood
+        pressure, decrease respiration rates, and improve the ability to cope with
+        pain.
+
+
+        * Fewer feelings of loneliness. Animals can provide companionship,
+        which is especially important for people who live alone and experience symptoms
+        of depression and anxiety.
+
+
+        * Reciprocal care and love. Caring for
+        an emotional support animal can also help give people a sense of purpose.
+        Not only do animals provide unconditional love and companionship, but they
+        also require care and love in return, which can be emotionally rewarding.
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2016,6 +2089,10 @@ PrefabInstance:
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793637877733882493, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
+      propertyPath: m_text
+      value: BENEFITS OF AN EMOTIONAL SUPPORT ANIMAL
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878127849510, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_Name
@@ -2753,26 +2830,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 895124020}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Maskable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_text
       value: A panic attack is a sudden episode of intense fear that triggers severe
