@@ -8,10 +8,9 @@ namespace Yarde.Quests
     public abstract class Quest : ScriptableObject
     {
         [field: SerializeField] public string SceneName { get; private set; }
-        
-        [field: SerializeField] public string SuccessText { get; private set; }
-        [field: SerializeField] public string FailText { get; private set; }
-        [field: SerializeField] public Color Color { get; private set; }
+        [field: SerializeField] public UiTooltip SuccessText { get; private set; }
+        [field: SerializeField] public UiTooltip FailText { get; private set; }
+        [field: SerializeField] public AudioClip Music { get; private set; }
 
         public event Action OnSucceeded;
         public event Action OnFailed;
@@ -36,11 +35,14 @@ namespace Yarde.Quests
                 _cancellationTokenSource.Dispose();
             }
             _cancellationTokenSource = new CancellationTokenSource();
+            RunInternal();
             await UniTask.WhenAny(
                 Success(_cancellationTokenSource), 
                 Fail(_cancellationTokenSource)
                 ).SuppressCancellationThrow();
         }
+
+        protected abstract void RunInternal();
 
         private async UniTask Success(CancellationTokenSource cts)
         {
@@ -64,5 +66,13 @@ namespace Yarde.Quests
 
         protected abstract UniTask SuccessCondition(CancellationTokenSource cts);
         protected abstract UniTask FailCondition(CancellationTokenSource cts);
+    }
+
+    [Serializable]
+    public class UiTooltip
+    {
+        [field: SerializeField] public string Text { get; private set; }
+        [field: SerializeField] public Color Color { get; private set; }
+        public bool HasText => !string.IsNullOrEmpty(Text);
     }
 }

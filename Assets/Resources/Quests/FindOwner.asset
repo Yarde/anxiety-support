@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: FindOwner
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: FindOwnerScene
-  <SuccessText>k__BackingField: 
-  <FailText>k__BackingField: Too late! Try again
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 0}
+  <SuccessText>k__BackingField:
+    <Text>k__BackingField: You did it!
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+  <FailText>k__BackingField:
+    <Text>k__BackingField: Too late! Try again.
+    <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Music>k__BackingField: {fileID: 8300000, guid: f734f471733ae4942802e77049d81517, type: 3}
   _timeToFinish: 100

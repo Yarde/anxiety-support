@@ -9,6 +9,7 @@ public class InfoSectionToggle : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private RectTransform _content;
     [SerializeField] private TextMeshProUGUI _contentText;
+    [SerializeField] private Transform _arrow;
     [SerializeField] private float _animationTime = 0.2f;
 
     private bool _isToggled = true;
@@ -30,12 +31,14 @@ public class InfoSectionToggle : MonoBehaviour
         {
             _content.DOSizeDelta(_closedSize, _animationTime);
             _contentText.DOFade(0f, _animationTime);
+            _arrow.DORotate(new Vector3(0, 0), _animationTime);
             _isToggled = false;
         }
         else
         {
             _content.DOSizeDelta(_openSize, _animationTime);
             _contentText.DOFade(1f, _animationTime);
+            _arrow.DORotate(new Vector3(90, 0), _animationTime);
             _isToggled = true;
         }
     }

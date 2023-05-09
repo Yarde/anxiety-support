@@ -14,6 +14,10 @@ namespace Yarde.Gameplay.Quests
         [SerializeField] private VideoClip _videoClip;
         [Inject] [UsedImplicitly] private VideoPlayer _videoPlayer;
 
+        protected override void RunInternal()
+        {
+        }
+
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
             _videoPlayer.gameObject.SetActive(true);
@@ -23,7 +27,6 @@ namespace Yarde.Gameplay.Quests
             _videoPlayer.Play();
             await UniTask.Delay(length, cancellationToken: cts.Token);
             _videoPlayer.gameObject.SetActive(false);
-
         }
 
         protected override async UniTask FailCondition(CancellationTokenSource cts)

@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: FightMonstersQuest
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: FightMonstarsScene
-  <SuccessText>k__BackingField: 
-  <FailText>k__BackingField: Try again
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 0}
+  <SuccessText>k__BackingField:
+    <Text>k__BackingField: You did it!
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+  <FailText>k__BackingField:
+    <Text>k__BackingField: You lost him! Try again.
+    <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Music>k__BackingField: {fileID: 0}

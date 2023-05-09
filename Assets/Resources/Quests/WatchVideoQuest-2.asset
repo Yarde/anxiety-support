@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: WatchVideoQuest-2
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: VideoScene
-  <SuccessText>k__BackingField: Defend your owner!
-  <FailText>k__BackingField: 
+  <SuccessText>k__BackingField:
+    <Text>k__BackingField: Defend your owner!
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 1}
+  <FailText>k__BackingField:
+    <Text>k__BackingField: 
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Music>k__BackingField: {fileID: 0}
   _videoClip: {fileID: 32900000, guid: 43456f45a96770a4f9125d41a5ec604d, type: 3}

@@ -9,6 +9,10 @@ namespace Yarde.Gameplay.Quests
     [CreateAssetMenu(fileName = "CreditsQuest", menuName = "Quests/CreditsQuest", order = 5)]
     public class CreditsQuest : Quest
     {
+        protected override void RunInternal()
+        {
+        }
+
         protected override UniTask SuccessCondition(CancellationTokenSource cts)
         {
             var button = FindObjectOfType<FinishQuestButton>();

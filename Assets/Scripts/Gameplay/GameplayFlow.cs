@@ -26,13 +26,13 @@ namespace Yarde.Gameplay
 
         public void Start()
         {
-            _audioManager.PlayFromResources("ambient", AudioType.Music);
             StartQuest(_currentQuestIndex).Forget();
         }
         
         private async UniTask StartQuest(int questIndex, string sceneToUnload = null)
         {
             CurrentQuest = _questline.GetQuest(questIndex);
+            _audioManager.PlayClip(AudioType.Music, CurrentQuest.Music);
             await _sceneController.ChangeScene(CurrentQuest.SceneName, sceneToUnload);
         }
 

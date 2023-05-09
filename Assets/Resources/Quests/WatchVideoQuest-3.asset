@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: WatchVideoQuest-3
   m_EditorClassIdentifier: 
   <SceneName>k__BackingField: VideoScene
+  <SuccessText>k__BackingField:
+    <Text>k__BackingField: 
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <FailText>k__BackingField:
+    <Text>k__BackingField: 
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Music>k__BackingField: {fileID: 8300000, guid: 6536dd7d6da56441aa47df449defb363, type: 3}
   _videoClip: {fileID: 32900000, guid: 293ea1bd20425c14eb9552b2b022c12b, type: 3}

@@ -23,10 +23,14 @@ namespace Yarde.Gameplay.Quests
 
         private float Distance => (_dog.View.transform.position - _owner.View.transform.position).magnitude;
 
-        protected override async UniTask SuccessCondition(CancellationTokenSource cts)
+        protected override void RunInternal()
         {
             _dog = _entityManager.GetEntityByType<Dog>();
             _owner = _entityManager.GetEntityByType<Owner>();
+        }
+
+        protected override async UniTask SuccessCondition(CancellationTokenSource cts)
+        {
             AdjustLight(cts).Forget();
             await UniTask.WaitUntil(() => Distance < 2, cancellationToken: cts.Token);
         }

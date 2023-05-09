@@ -2,6 +2,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Yarde.Quests;
 
 namespace Yarde.UI
 {
@@ -15,9 +16,15 @@ namespace Yarde.UI
             _canvasGroup.alpha = 0f;
         }
 
-        public async UniTask ShowInfo(string info, Color currentQuestColor)
+        public async UniTask ShowInfo(UiTooltip info)
         {
-            _infoText.text = info;
+            if (!info.HasText)
+            {
+                return;
+            }
+
+            _infoText.text = info.Text;
+            _infoText.color = info.Color;
             await _canvasGroup.DOFade(1f, 0.3f);
             await UniTask.Delay(2000);
             await _canvasGroup.DOFade(0f, 0.3f);

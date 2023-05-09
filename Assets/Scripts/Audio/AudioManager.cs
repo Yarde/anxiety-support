@@ -16,15 +16,6 @@ namespace Yarde.Audio
         {
             _musicSource.loop = true;
         }
-        
-        public void PlayFromResources(string trackName, AudioType type)
-        {
-            Debug.Log($"Playing {type} {trackName}");
-            var clip = Resources.Load<AudioClip>($"Audio/{type}/{trackName}");
-            Assert.IsNotNull(clip, $"Clip {trackName} not found");
-
-            PlayClip(type, clip);
-        }
 
         public void PlayClip(AudioType type, AudioClip clip)
         {
