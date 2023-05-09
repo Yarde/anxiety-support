@@ -481,6 +481,7 @@ MonoBehaviour:
   _button: {fileID: 4672694024398341577}
   _content: {fileID: 3793637878141640159}
   _contentText: {fileID: 3793637876616104910}
+  _arrow: {fileID: 4335086550394028822}
   _animationTime: 0.2
 --- !u!1 &3793637878141640158
 GameObject:

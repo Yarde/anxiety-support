@@ -31,14 +31,14 @@ public class InfoSectionToggle : MonoBehaviour
         {
             _content.DOSizeDelta(_closedSize, _animationTime);
             _contentText.DOFade(0f, _animationTime);
-            _arrow.DORotate(new Vector3(0, 0), _animationTime);
+            _arrow.DORotate(new Vector3(0, 0, 0), _animationTime);
             _isToggled = false;
         }
         else
         {
             _content.DOSizeDelta(_openSize, _animationTime);
             _contentText.DOFade(1f, _animationTime);
-            _arrow.DORotate(new Vector3(90, 0), _animationTime);
+            _arrow.DORotate(new Vector3(0, 0, -90), _animationTime);
             _isToggled = true;
         }
     }
