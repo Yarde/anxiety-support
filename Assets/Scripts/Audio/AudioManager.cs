@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace Yarde.Audio
 {
@@ -9,7 +8,7 @@ namespace Yarde.Audio
     {
         [SerializeField] private AudioSource _musicSource;
         [SerializeField] private List<AudioSource> _sfxSources;
-        
+
         private int _sfxIndex;
 
         private void Awake()
@@ -23,6 +22,7 @@ namespace Yarde.Audio
             {
                 return;
             }
+
             var source = GetSource(type);
             source.clip = clip;
             source.Play();
@@ -42,7 +42,7 @@ namespace Yarde.Audio
             }
         }
     }
-    
+
     public enum AudioType
     {
         Music,

@@ -16,8 +16,9 @@ namespace Yarde.Gameplay.Entities.View
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private AudioClip _attackClip;
-        [SerializeField] private AudioClip _dieClip;
+        [SerializeField] private List<AudioClip> _spawmClips;
+        [SerializeField] private List<AudioClip> _attackClips;
+        [SerializeField] private List<AudioClip> _dieClips;
 
         [Inject] [UsedImplicitly] private AudioManager _audioManager;
 
@@ -36,6 +37,7 @@ namespace Yarde.Gameplay.Entities.View
                 meshRenderer.material = newMaterial;
                 _materials.Add(newMaterial);
             }
+            _audioManager.PlayClip(AudioType.Sfx, _spawmClips.Random());
         }
 
         public void SetTarget(EntityView target)
@@ -46,7 +48,7 @@ namespace Yarde.Gameplay.Entities.View
 
         public async UniTaskVoid OnDie()
         {
-            _audioManager.PlayClip(AudioType.Sfx, _dieClip);
+            _audioManager.PlayClip(AudioType.Sfx, _dieClips.Random());
             _characterController.enabled = false;
             var animationTask = _animator.TriggerAndWaitForStateEnd("Die", this.GetCancellationTokenOnDestroy());
 
@@ -58,7 +60,7 @@ namespace Yarde.Gameplay.Entities.View
 
         public async UniTask Attack()
         {
-            _audioManager.PlayClip(AudioType.Sfx, _attackClip);
+            _audioManager.PlayClip(AudioType.Sfx, _attackClips.Random());
             await _animator.TriggerAndWaitForStateEnd("Attack", this.GetCancellationTokenOnDestroy());
         }
 
