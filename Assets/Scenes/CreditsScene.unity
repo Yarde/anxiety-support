@@ -259,10 +259,11 @@ PrefabInstance:
       propertyPath: m_text
       value: "An emotional support animal is an animal companion that offers some
         type of benefit to an individual with some form of disability. The animal
-        is intended to provide companionship and support that will help alleviate
-        at least one aspect of the disability.\r \nDogs are the most common type
-        of emotional support animal, but cats are quite common as well. Other types
-        of animals, such as miniature horses, can also serve as ESAs."
+        is intended to <b>provide companionship</b> and <b>support</b> that will
+        help alleviate at least one aspect of the disability.\r \n<b>Dogs</b> are
+        the most common type of emotional support animal, but cats are quite common
+        as well. Other types of animals, such as miniature horses, can also serve
+        as ESAs."
       objectReference: {fileID: 0}
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_fontStyle
@@ -406,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 661.3
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1137,7 +1138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1920.74}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &895124021
@@ -1360,16 +1361,10 @@ PrefabInstance:
         there are important distinctions between the two. Emotional support animals
         are intended to provide companionship and support. On the other hand, service
         animals assist individuals with disabilities by performing specific tasks.
-        Service animals have been specially trained to perform a service for a person
-        with some form of disability. Functions that a service animal might perform
-        include alerting a person about a sound, guiding a person along the street,
-        pressing an elevator button, retrieving items, alerting others or standing
-        guard if the individual is experiencing a seizure, or reminding the individual
-        to take his or her medication.
-
-        Emotional support animals, on the
-        other hand, are there to provide companionship aimed at alleviating distress
-        or providing some other type of relief. '
+        <b>Service animals</b> have been specially trained to perform a service for
+        a person with some form of disability. <b>Emotional support animals</b>,
+        on the other hand, are there to provide companionship aimed at alleviating
+        distress or providing some other type of relief. '
       objectReference: {fileID: 0}
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1501,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1250
+      value: 890
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1994,23 +1989,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_text
-      value: "Benefits of an emotional support animal\nWhy would an individual choose
-        to use an emotional support animal? Research has long supported the idea
-        that animals can provide significant mental health benefits. One research
-        review found that owning a pet has positive effects on mental health by fostering
-        emotional connectivity and helping people manage in times of crisis. Some
-        of the other benefits that emotional support animals may provide include:\n\n 
-        <b>Less anxiety.</b> Simply petting an animal can create a relaxation response
-        and elevate mood.\n\n  <b>Trauma support.</b> Pets can provide comfort to
-        people who are dealing with difficult situations.\n\n  <b>Improved physical
-        health.</b> Studies have found that emotional support animals help to lower
-        blood pressure, decrease respiration rates, and improve the ability to cope
-        with pain.\n\n  <b>Fewer feelings of loneliness.</b> Animals can provide
-        companionship, which is especially important for people who live alone and
-        experience symptoms of depression and anxiety.\n\n  <b>Reciprocal care and
-        love.</b> Caring for an emotional support animal can also help give people
-        a sense of purpose. Not only do animals provide unconditional love and companionship,
-        but they also require care and love in return, which can be emotionally rewarding.\n"
+      value: "\nWhy would an individual choose to use an emotional support animal?
+        Research has long supported the idea that animals can provide significant
+        mental health benefits. One research review found that owning a pet has positive
+        effects on mental health by fostering emotional connectivity and helping
+        people manage in times of crisis. Some of the other benefits that emotional
+        support animals may provide include:\n\n  <b>Less anxiety.</b> Simply petting
+        an animal can create a relaxation response and elevate mood.\n\n  <b>Trauma
+        support.</b> Pets can provide comfort to people who are dealing with difficult
+        situations.\n\n  <b>Improved physical health.</b> Studies have found that
+        emotional support animals help to lower blood pressure, decrease respiration
+        rates, and improve the ability to cope with pain.\n\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3793637877510738985, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2142,7 +2131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 2032
+      value: 1550
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2779,10 +2768,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_text
-      value: A panic attack is a sudden episode of intense fear that triggers severe
-        physical reactions when there is no real danger or apparent cause. Panic
-        attacks can be very frightening. When panic attacks occur, you might think
-        you're losing control, having a heart attack or even dying.
+      value: A panic attack is a sudden <b>episode of intense fear</b> that triggers
+        severe physical reactions when there is no real danger or apparent cause.
+        Panic attacks can be very frightening. When panic attacks occur, you might
+        think you're <b>losing control</b>, having a heart attack or even dying.
       objectReference: {fileID: 0}
     - target: {fileID: 3793637876616104910, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_fontSizeBase
@@ -2923,10 +2912,6 @@ PrefabInstance:
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 429.1
       objectReference: {fileID: 0}
     - target: {fileID: 3793637878141640159, guid: 3d60e8237b4814274997cb636ec43a3f, type: 3}
       propertyPath: m_AnchoredPosition.x
