@@ -16,9 +16,9 @@ namespace Yarde.Gameplay.Entities.View
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private Animator _animator;
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private List<AudioClip> _spawmClips;
-        [SerializeField] private List<AudioClip> _attackClips;
-        [SerializeField] private List<AudioClip> _dieClips;
+        [SerializeField] private List<AudioClip> _spawmClips = new ();
+        [SerializeField] private List<AudioClip> _attackClips = new ();
+        [SerializeField] private List<AudioClip> _dieClips = new ();
 
         [Inject] [UsedImplicitly] private AudioManager _audioManager;
 
