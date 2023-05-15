@@ -11,7 +11,8 @@ namespace Yarde
         private void Start()
         {
             Logger.Level = _loggerLevel;
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
     }
 }

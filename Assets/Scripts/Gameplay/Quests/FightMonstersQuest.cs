@@ -50,9 +50,8 @@ namespace Yarde.Gameplay.Quests
             while (!cts.IsCancellationRequested)
             {
                 var health = _owner.Health / 100f;
-                var distance = Mathf.InverseLerp(40f, 15f, Distance);
+                var distance = Mathf.InverseLerp(20f, 5f, Distance);
                 var intensity = Mathf.Min(health, distance);
-                Debug.Log(intensity);
                 _effectManager.SetIntensity(intensity);
                 await UniTask.Delay(100);
             }
