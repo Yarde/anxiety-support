@@ -10,6 +10,8 @@ namespace Yarde.Utils.Extensions
 {
     public static class CollectionExtensions
     {
+        private static Random _random = new Random();
+        
         public static IEnumerator<T> EmptyEnumerator<T>()
         {
             yield break;
@@ -235,7 +237,7 @@ namespace Yarde.Utils.Extensions
             return items;
         }
 
-        public static T Random<T>(this IReadOnlyList<T> items) => Random(items, new Random(Environment.TickCount));
+        public static T Random<T>(this IReadOnlyList<T> items) => Random(items, _random);
 
         public static T Random<T>(this IReadOnlyList<T> items, Random rng) =>
             items.Count == 0 ? default : items[rng.Next(items.Count)];
