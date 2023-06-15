@@ -8,6 +8,8 @@ namespace Yarde.Gameplay.Entities.Entity
 {
     public class BossMonster : Monster
     {
+        private CharacterController _characterController;
+        
         public BossMonster(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
         }
@@ -17,6 +19,7 @@ namespace Yarde.Gameplay.Entities.Entity
         protected override void SetupInternal()
         {
             base.SetupInternal();
+            _characterController = _monsterView.GetComponent<CharacterController>();
             Token = _monsterView.GetCancellationTokenOnDestroy();
         }
 
@@ -44,6 +47,7 @@ namespace Yarde.Gameplay.Entities.Entity
 
         private async UniTask Teleport()
         {
+            _characterController.enabled = false;
             await UniTask.Delay(1000, cancellationToken: Token);
             await _monsterView.Fade(0, 0.5f);
             if (Token.IsCancellationRequested)
@@ -52,6 +56,7 @@ namespace Yarde.Gameplay.Entities.Entity
             }
             _monsterView.transform.position = GetRandomPosition();
             await _monsterView.Fade(1, 0.5f);
+            _characterController.enabled = true;
         }
 
         private Vector3 GetRandomPosition()
