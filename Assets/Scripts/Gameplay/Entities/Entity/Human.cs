@@ -9,10 +9,11 @@ namespace Yarde.Gameplay.Entities.Entity
 {
     public class Human : Entity
     {
-        private const float PlaneSize = 15f;
-        private const float ChanceOfMoving = 0.4f;
+        private const float MovementRange = 5f;
+        private const float ChanceOfMoving = 0.6f;
 
         private HumanView _humanView;
+        private Vector3 _startPosition;
 
         public Human(IObjectResolver container, SpawnPoint spawnPoint) : base(container, spawnPoint)
         {
@@ -27,6 +28,7 @@ namespace Yarde.Gameplay.Entities.Entity
 
         private async UniTaskVoid StartRandomMovement()
         {
+            _startPosition = _humanView.transform.position;
             var token = _humanView.GetCancellationTokenOnDestroy();
             while (!token.IsCancellationRequested)
             {
@@ -39,18 +41,15 @@ namespace Yarde.Gameplay.Entities.Entity
             var isMoving = Random.Range(0f, 1f);
             if (isMoving < ChanceOfMoving)
             {
-                var randomPosition = new Vector3(Random.Range(-PlaneSize, PlaneSize), 0,
-                    Random.Range(-PlaneSize, PlaneSize));
-                _humanView.SetTarget(randomPosition);
+                var x = Random.Range(_startPosition.x - MovementRange, _startPosition.x + MovementRange);
+                var z = Random.Range(_startPosition.z - MovementRange, _startPosition.z + MovementRange);
+                _humanView.SetTarget(new Vector3(x, 0, z));
                 await UniTask.WaitUntil(_humanView.IsReachedTarget, cancellationToken: cancellationToken);
             }
-
-            if (cancellationToken.IsCancellationRequested)
+            else
             {
-                return;
+                await UniTask.Delay((int)(Random.Range(1f, 5f) * 1000), cancellationToken: cancellationToken);
             }
-            
-            await UniTask.Delay((int)(Random.Range(1f, 5f) * 1000), cancellationToken: cancellationToken);
         }
 
         public override bool TakeDamage(int damage)
