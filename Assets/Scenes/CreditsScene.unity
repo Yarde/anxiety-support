@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 136431699}
   - component: {fileID: 136431701}
   - component: {fileID: 136431700}
+  - component: {fileID: 136431702}
   m_Layer: 5
   m_Name: GameObject
   m_TagString: Untagged
@@ -187,7 +188,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: file://C:/Users/dawid.kaluza/Documents/Anxiety Support/Assets/StreamingAssets/DogGif.mp4
+  m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
@@ -232,6 +233,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136431697}
   m_CullTransparentMesh: 1
+--- !u!114 &136431702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136431697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b114435bc68d740827f517f24c417b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _videoName: DogGif.mp4
+  _videoPlayer: {fileID: 136431699}
 --- !u!1 &161557572
 GameObject:
   m_ObjectHideFlags: 0
