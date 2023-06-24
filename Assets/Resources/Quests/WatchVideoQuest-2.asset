@@ -21,3 +21,4 @@ MonoBehaviour:
     <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   <Music>k__BackingField: {fileID: 0}
   _videoClip: {fileID: 32900000, guid: 43456f45a96770a4f9125d41a5ec604d, type: 3}
+  _videoUrl: https://github.com/Yarde/anxiety-support/blob/main/Assets/Mp4/Scene_02.mp4

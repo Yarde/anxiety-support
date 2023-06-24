@@ -12,6 +12,7 @@ namespace Yarde.Gameplay.Quests
     public class WatchVideoQuest : Quest
     {
         [SerializeField] private VideoClip _videoClip;
+        [SerializeField] private string _videoUrl;
         [Inject] [UsedImplicitly] private VideoPlayer _videoPlayer;
 
         protected override void RunInternal()
@@ -20,8 +21,12 @@ namespace Yarde.Gameplay.Quests
 
         protected override async UniTask SuccessCondition(CancellationTokenSource cts)
         {
+            _videoPlayer.source = Application.platform == RuntimePlatform.WebGLPlayer
+                ? VideoSource.Url
+                : VideoSource.VideoClip;
             _videoPlayer.gameObject.SetActive(true);
             _videoPlayer.clip = _videoClip;
+            _videoPlayer.url = _videoUrl;
             var length = (int)(_videoClip.length * 1000);
             Debug.Log($"Playing video {_videoClip.name}, length: {length} ms");
             _videoPlayer.Play();
