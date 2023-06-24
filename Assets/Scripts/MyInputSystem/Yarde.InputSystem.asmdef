@@ -1,5 +1,5 @@
 {
-    "name": "Yarde.InputSystem",
+    "name": "Yarde.MyInputSystem",
     "rootNamespace": "Yarde",
     "references": [],
     "includePlatforms": [],

@@ -15,7 +15,7 @@ MonoBehaviour:
   <ViewPrefab>k__BackingField:
   - {fileID: 4279733482620833238, guid: 1036f492d59ca0f48831488a4b0f1e89, type: 3}
   <Type>k__BackingField: 3
-  <Delay>k__BackingField: 3
+  <Delay>k__BackingField: 4
   <Repeats>k__BackingField: 3
-  <Cooldown>k__BackingField: 20
+  <Cooldown>k__BackingField: 25
   <Health>k__BackingField: 1

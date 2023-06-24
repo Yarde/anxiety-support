@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
-namespace Yarde.Input
+namespace Yarde.MyInputSystem
 {
     public class InputSystem
     {
         private readonly Joystick _joystick;
 
-        private float X => _joystick.Horizontal;
-        private float Y => _joystick.Vertical;
-        public Vector3 Input => new(_joystick.Horizontal, 0, _joystick.Vertical);
+        private float X => Mathf.Clamp(_joystick.Horizontal + Input.GetAxis("Horizontal"), -1, 1);
+        private float Y => Mathf.Clamp(_joystick.Vertical + Input.GetAxis("Vertical"), -1, 1);
+        public Vector3 InputValue => new(X, 0, Y);
         private float TargetAngle => Mathf.Atan2(X, Y) * Mathf.Rad2Deg;
-        public bool IsMoving => Input.magnitude > 0;
+        public bool IsMoving => InputValue.magnitude > 0;
 
         private float _turnSmoothVelocity;
 

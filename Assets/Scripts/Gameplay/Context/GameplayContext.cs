@@ -4,8 +4,8 @@ using VContainer.Unity;
 using Yarde.Camera;
 using Yarde.Gameplay.Entities;
 using Yarde.Gameplay.Scenes;
-using Yarde.Input;
 using Yarde.Light;
+using Yarde.MyInputSystem;
 using Yarde.Quests;
 using Yarde.UI;
 

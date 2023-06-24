@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -8,6 +9,7 @@ using VContainer;
 using Yarde.Audio;
 using Yarde.Utils.Extensions;
 using AudioType = Yarde.Audio.AudioType;
+using Random = UnityEngine.Random;
 
 namespace Yarde.Gameplay.Entities.View
 {
@@ -37,12 +39,16 @@ namespace Yarde.Gameplay.Entities.View
                 meshRenderer.material = newMaterial;
                 _materials.Add(newMaterial);
             }
+        }
+
+        private void Start()
+        {
             _audioManager.PlayClip(AudioType.Sfx, _spawmClips.Random());
         }
 
         public void SetTarget(EntityView target)
         {
-            _navMeshAgent.stoppingDistance = Random.Range(3f, 5f);
+            _navMeshAgent.stoppingDistance = Random.Range(2f, 4f);
             _navMeshAgent.SetDestination(target.transform.position);
         }
 

@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
 using Yarde.Audio;
-using Yarde.Input;
+using Yarde.MyInputSystem;
 using Yarde.Utils.Extensions;
 using AudioType = Yarde.Audio.AudioType;
 
@@ -38,11 +38,11 @@ namespace Yarde.Gameplay.Entities.View
 
         public void FixedUpdate()
         {
-            _animator.SetFloat(Speed, _inputSystem.Input.magnitude);
+            _animator.SetFloat(Speed, _inputSystem.InputValue.magnitude);
 
             if (!_inputSystem.IsMoving || _isAttacking) return;
 
-            _characterController.Move(_inputSystem.Input * (_speed * Time.fixedDeltaTime));
+            _characterController.Move(_inputSystem.InputValue * (_speed * Time.fixedDeltaTime));
             transform.rotation = _inputSystem.LookRotationSmoothed(transform.eulerAngles.y, _turnSmoothTime);
         }
 
