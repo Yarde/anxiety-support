@@ -21,8 +21,8 @@ namespace Yarde.Scene
 
         private async UniTask<LoadingScreen> Initialize()
         {
-            await SceneManager.LoadSceneAsync(LoadingSceneName, LoadSceneMode.Additive);
-            return Object.FindObjectOfType<LoadingScreen>();
+            await SceneManager.LoadSceneAsync(LoadingSceneName, LoadSceneMode.Additive).ToUniTask();
+            return Object.FindFirstObjectByType<LoadingScreen>();
         }
 
         public async UniTask ChangeScene(string sceneToLoad, string sceneToUnload)
@@ -35,7 +35,7 @@ namespace Yarde.Scene
             if (!string.IsNullOrEmpty(sceneToUnload))
             {
                 Debug.Log($"Unloading scene {sceneToUnload}");
-                await SceneManager.UnloadSceneAsync(sceneToUnload);
+                await SceneManager.UnloadSceneAsync(sceneToUnload).ToUniTask();
             }
 
             Debug.Log($"Loading scene {sceneToLoad}");
